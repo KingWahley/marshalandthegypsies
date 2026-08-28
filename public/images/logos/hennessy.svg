@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 400 130" xmlns="http://www.w3.org/2000/svg">
+  <g fill="#1a1a1a">
+    <!-- Bras Armé Halberd Icon -->
+    <path d="M198 12c-2.5 0-4.5 2-4.5 4.5v12h9v-12c0-2.5-2-4.5-4.5-4.5z"/>
+    <path d="M185 24c-1.5 4-1 9 1.5 12.5l7.5-3.5v-8l-9-1z"/>
+    <path d="M211 24l-9 1v8l7.5 3.5c2.5-3.5 3-8.5 1.5-12.5z"/>
+    <path d="M178 38c6-2 15-1 20 4.5 5-5.5 14-6.5 20-4.5l3-5c-8-3-18-1-23 5-5-6-15-8-23-5l3 5z"/>
+    <path d="M190 48c4 3 12 3 16 0l2 4c-6 4-14 4-20 0l2-4z"/>
+    <!-- Hennessy Typography -->
+    <text x="200" y="88" text-anchor="middle" font-family="'Times New Roman', Times, Georgia, serif" font-weight="700" font-size="44" letter-spacing="3">Hennessy</text>
+    <!-- COGNAC Subtitle -->
+    <text x="200" y="112" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="14" letter-spacing="9" opacity="0.75">COGNAC</text>
+  </g>
+</svg>

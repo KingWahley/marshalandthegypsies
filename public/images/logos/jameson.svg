@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 380 110" xmlns="http://www.w3.org/2000/svg">
+  <g fill="#1a1a1a">
+    <!-- Star accent -->
+    <path d="M190 12l2.5 5.5 6 .9-4.3 4.2 1 6-5.2-2.7-5.2 2.7 1-6-4.3-4.2 6-.9z" fill="#047857"/>
+    <!-- Jameson Typography -->
+    <text x="190" y="62" text-anchor="middle" font-family="'Times New Roman', Times, Georgia, serif" font-weight="900" font-size="46" letter-spacing="4">JAMESON</text>
+    <text x="190" y="88" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="13" letter-spacing="8" fill="#047857">IRISH WHISKEY</text>
+  </g>
+</svg>

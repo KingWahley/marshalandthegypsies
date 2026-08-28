@@ -72,6 +72,11 @@ export const Footer: React.FC = () => {
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
+                <Link href="/gallery" className="hover:text-white transition-colors">
+                  Visual Gallery
+                </Link>
+              </li>
+              <li>
                 <Link href="/#resources" className="hover:text-white transition-colors">
                   Instagram Feed
                 </Link>

@@ -21,8 +21,10 @@ export const Navbar: React.FC = () => {
   const navLinks = [
     { name: 'About', href: '/about' },
     { name: 'Services', href: '/services' },
+    { name: 'Gallery', href: '/gallery' },
     { name: 'How It Works', href: '/#how-it-works' },
     { name: 'Instagram', href: '/#resources' },
+    { name: 'Contact', href: '/contact' },
   ];
 
   return (
@@ -60,16 +62,14 @@ export const Navbar: React.FC = () => {
 
         {/* Action Button */}
         <div className="hidden md:flex items-center gap-3">
-          <Button
-            variant="dark"
-            size="sm"
-            onClick={() => {
-              const el = document.getElementById('contact');
-              el?.scrollIntoView({ behavior: 'smooth' });
-            }}
-          >
-            Get in Touch
-          </Button>
+          <Link href="/contact">
+            <Button
+              variant="dark"
+              size="sm"
+            >
+              Get in Touch
+            </Button>
+          </Link>
         </div>
 
         {/* Mobile Menu Button */}
@@ -103,18 +103,15 @@ export const Navbar: React.FC = () => {
             ))}
           </nav>
           <div className="pt-2 border-t border-zinc-100">
-            <Button
-              variant="dark"
-              size="md"
-              className="w-full"
-              onClick={() => {
-                setMobileMenuOpen(false);
-                const el = document.getElementById('contact');
-                el?.scrollIntoView({ behavior: 'smooth' });
-              }}
-            >
-              Get in Touch
-            </Button>
+            <Link href="/contact" onClick={() => setMobileMenuOpen(false)} className="block w-full">
+              <Button
+                variant="dark"
+                size="md"
+                className="w-full"
+              >
+                Get in Touch
+              </Button>
+            </Link>
           </div>
         </div>
       )}

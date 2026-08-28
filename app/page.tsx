@@ -3,6 +3,7 @@ import { Navbar } from '@/components/navigation/Navbar';
 import { Hero } from '@/components/sections/Hero';
 import { AboutUs } from '@/components/sections/AboutUs';
 import { OurServices } from '@/components/sections/OurServices';
+import { BrandMarquee } from '@/components/sections/BrandMarquee';
 import { HowItWorks } from '@/components/sections/HowItWorks';
 import { ResourceGuides } from '@/components/sections/ResourceGuides';
 import { CallToAction } from '@/components/sections/CallToAction';
@@ -25,6 +26,9 @@ export default function Home() {
 
         {/* Services & Offerings Showcase */}
         <OurServices />
+
+        {/* Brands We Work With Marquee */}
+        <BrandMarquee />
 
         {/* Step-by-Step Workflow Showcase */}
         <HowItWorks />
