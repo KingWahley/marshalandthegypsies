@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import { Menu, X, ArrowUpRight, Mail, Phone, MapPin } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/Button';
@@ -16,8 +17,13 @@ const InstagramIcon: React.FC<{ className?: string }> = ({ className = 'w-3.5 h-
 );
 
 export const Navbar: React.FC = () => {
+  const pathname = usePathname();
+  const isHome = pathname === '/';
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  // If on non-home page and not scrolled yet, we are over the dark hero
+  const isDarkHero = !isHome && !isScrolled;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -61,7 +67,7 @@ export const Navbar: React.FC = () => {
         <div className="max-w-[1380px] mx-auto px-4 sm:px-8 lg:px-[65px] flex items-center justify-between">
           {/* Brand Logo */}
           <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-lg overflow-hidden shadow-xs border border-zinc-200 group-hover:scale-105 transition-transform bg-zinc-900">
+            <div className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-lg overflow-hidden shadow-xs border border-zinc-200/50 group-hover:scale-105 transition-transform bg-zinc-900">
               <Image
                 src="/images/mge-logo.jpeg"
                 alt="MGE — Marshall & The Gypsies Logo"
@@ -71,7 +77,12 @@ export const Navbar: React.FC = () => {
                 priority
               />
             </div>
-            <span className="font-black text-xl tracking-tight text-zinc-950">
+            <span
+              className={cn(
+                'font-black text-xl tracking-tight transition-colors duration-200',
+                isDarkHero ? 'text-white' : 'text-zinc-950'
+              )}
+            >
               MGE
             </span>
           </Link>
@@ -82,7 +93,12 @@ export const Navbar: React.FC = () => {
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-sm font-medium text-zinc-800 hover:text-black transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-black hover:after:w-full after:transition-all after:duration-200"
+                className={cn(
+                  'text-sm font-medium transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] hover:after:w-full after:transition-all after:duration-200',
+                  isDarkHero
+                    ? 'text-zinc-200 hover:text-white after:bg-white'
+                    : 'text-zinc-800 hover:text-black after:bg-black'
+                )}
               >
                 {link.name}
               </Link>
@@ -93,9 +109,14 @@ export const Navbar: React.FC = () => {
           <div className="hidden md:flex items-center gap-3">
             <Link href="/contact">
               <Button
-                variant="dark"
+                variant={isDarkHero ? 'white' : 'dark'}
                 size="sm"
-                className="rounded-full px-5 font-semibold text-xs"
+                className={cn(
+                  'rounded-full px-5 font-semibold text-xs transition-all duration-200',
+                  isDarkHero
+                    ? 'bg-white text-black hover:bg-zinc-200 shadow-sm'
+                    : 'bg-black text-white hover:bg-zinc-800'
+                )}
               >
                 Get in Touch
               </Button>
@@ -105,7 +126,12 @@ export const Navbar: React.FC = () => {
           {/* Mobile Hamburger Button */}
           <button
             type="button"
-            className="md:hidden w-10 h-10 rounded-full bg-zinc-100 border border-zinc-200 flex items-center justify-center text-zinc-900 hover:bg-zinc-200 active:scale-95 transition-all shadow-xs cursor-pointer"
+            className={cn(
+              'md:hidden w-10 h-10 rounded-full border flex items-center justify-center active:scale-95 transition-all shadow-xs cursor-pointer',
+              isDarkHero
+                ? 'bg-white/15 text-white border-white/25 hover:bg-white/25'
+                : 'bg-zinc-100 border-zinc-200 text-zinc-900 hover:bg-zinc-200'
+            )}
             onClick={() => setMobileMenuOpen(true)}
             aria-label="Open Navigation Menu"
           >
