@@ -20,9 +20,9 @@ export const Navbar: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 15);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -47,66 +47,70 @@ export const Navbar: React.FC = () => {
   ];
 
   return (
-    <header
-      className={cn(
-        'fixed top-0 left-0 right-0 z-40 transition-all duration-300',
-        isScrolled
-          ? 'bg-white/90 backdrop-blur-md shadow-xs py-3.5 border-b border-zinc-200/50'
-          : 'bg-transparent py-5'
-      )}
-    >
-      <div className="max-w-[1380px] mx-auto px-4 sm:px-8 lg:px-[65px] flex items-center justify-between">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-9 h-9 rounded-lg bg-black flex items-center justify-center text-white font-black text-lg tracking-tighter shadow-xs group-hover:scale-105 transition-transform">
-            M
-          </div>
-          <span className="font-black text-xl tracking-tight text-zinc-950">
-            MGE
-          </span>
-        </Link>
-
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className="text-sm font-medium text-zinc-800 hover:text-black transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-black hover:after:w-full after:transition-all after:duration-200"
-            >
-              {link.name}
-            </Link>
-          ))}
-        </nav>
-
-        {/* Action Button */}
-        <div className="hidden md:flex items-center gap-3">
-          <Link href="/contact">
-            <Button
-              variant="dark"
-              size="sm"
-            >
-              Get in Touch
-            </Button>
+    <>
+      {/* ── Main Fixed Header ── */}
+      <header
+        className={cn(
+          'fixed top-0 left-0 right-0 z-40 transition-all duration-300',
+          isScrolled
+            ? 'bg-white/95 backdrop-blur-md shadow-xs py-3 sm:py-3.5 border-b border-zinc-200/60'
+            : 'bg-white/90 backdrop-blur-md py-4 sm:py-4.5 border-b border-zinc-200/40'
+        )}
+      >
+        <div className="max-w-[1380px] mx-auto px-4 sm:px-8 lg:px-[65px] flex items-center justify-between">
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-2.5 group">
+            <div className="w-9 h-9 rounded-lg bg-black flex items-center justify-center text-white font-black text-lg tracking-tighter shadow-xs group-hover:scale-105 transition-transform">
+              M
+            </div>
+            <span className="font-black text-xl tracking-tight text-zinc-950">
+              MGE
+            </span>
           </Link>
-        </div>
 
-        {/* Mobile Hamburger Button */}
-        <button
-          type="button"
-          className="md:hidden p-2 rounded-xl text-zinc-900 hover:bg-black/5 active:scale-95 transition-all cursor-pointer"
-          onClick={() => setMobileMenuOpen(true)}
-          aria-label="Open Navigation Menu"
-        >
-          <Menu className="w-6 h-6" />
-        </button>
-      </div>
+          {/* Desktop Nav */}
+          <nav className="hidden md:flex items-center gap-8">
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                className="text-sm font-medium text-zinc-800 hover:text-black transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-black hover:after:w-full after:transition-all after:duration-200"
+              >
+                {link.name}
+              </Link>
+            ))}
+          </nav>
+
+          {/* Action Button */}
+          <div className="hidden md:flex items-center gap-3">
+            <Link href="/contact">
+              <Button
+                variant="dark"
+                size="sm"
+                className="rounded-full px-5 font-semibold text-xs"
+              >
+                Get in Touch
+              </Button>
+            </Link>
+          </div>
+
+          {/* Mobile Hamburger Button */}
+          <button
+            type="button"
+            className="md:hidden w-10 h-10 rounded-full bg-zinc-100 border border-zinc-200 flex items-center justify-center text-zinc-900 hover:bg-zinc-200 active:scale-95 transition-all shadow-xs cursor-pointer"
+            onClick={() => setMobileMenuOpen(true)}
+            aria-label="Open Navigation Menu"
+          >
+            <Menu className="w-5 h-5" />
+          </button>
+        </div>
+      </header>
 
       {/* ── HIGH-END MOBILE SIDE DRAWER NAVIGATION ── */}
       {/* Backdrop */}
       <div
         className={cn(
-          'fixed inset-0 bg-black/70 backdrop-blur-sm z-50 transition-opacity duration-300 md:hidden',
+          'fixed inset-0 bg-black/80 backdrop-blur-sm z-[99] transition-opacity duration-300 md:hidden',
           mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         )}
         onClick={() => setMobileMenuOpen(false)}
@@ -116,7 +120,7 @@ export const Navbar: React.FC = () => {
       <aside
         aria-label="Mobile Navigation"
         className={cn(
-          'fixed inset-y-0 right-0 w-full max-w-[340px] sm:max-w-[380px] bg-zinc-950 text-white z-50 shadow-2xl flex flex-col justify-between p-6 sm:p-8 transition-transform duration-300 ease-out md:hidden border-l border-zinc-800',
+          'fixed inset-y-0 right-0 w-full max-w-[340px] sm:max-w-[380px] bg-[#09090b] text-white z-[100] shadow-2xl flex flex-col justify-between p-6 sm:p-8 min-h-[100dvh] h-full overflow-y-auto border-l border-zinc-800 transition-transform duration-300 ease-out md:hidden',
           mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         )}
       >
@@ -222,6 +226,6 @@ export const Navbar: React.FC = () => {
           </div>
         </div>
       </aside>
-    </header>
+    </>
   );
 };
