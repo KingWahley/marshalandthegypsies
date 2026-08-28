@@ -2,9 +2,17 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ArrowUpRight, Mail, Phone, MapPin } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/Button';
+
+const InstagramIcon: React.FC<{ className?: string }> = ({ className = 'w-3.5 h-3.5' }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+  </svg>
+);
 
 export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -18,21 +26,32 @@ export const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Prevent background scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
+
   const navLinks = [
-    { name: 'About', href: '/about' },
-    { name: 'Services', href: '/services' },
-    { name: 'Projects', href: '/projects' },
-    { name: 'Gallery', href: '/gallery' },
-    { name: 'How It Works', href: '/#how-it-works' },
-    { name: 'Contact', href: '/contact' },
+    { name: 'Home', href: '/', num: '01' },
+    { name: 'About Us', href: '/about', num: '02' },
+    { name: 'Services', href: '/services', num: '03' },
+    { name: 'Projects', href: '/projects', num: '04' },
+    { name: 'Gallery', href: '/gallery', num: '05' },
   ];
 
   return (
     <header
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+        'fixed top-0 left-0 right-0 z-40 transition-all duration-300',
         isScrolled
-          ? 'bg-white/85 backdrop-blur-md shadow-xs py-3.5 border-b border-zinc-200/50'
+          ? 'bg-white/90 backdrop-blur-md shadow-xs py-3.5 border-b border-zinc-200/50'
           : 'bg-transparent py-5'
       )}
     >
@@ -72,49 +91,137 @@ export const Navbar: React.FC = () => {
           </Link>
         </div>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Hamburger Button */}
         <button
           type="button"
-          className="md:hidden p-2 rounded-lg text-zinc-800 hover:bg-black/5 transition-colors"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-label="Toggle Menu"
+          className="md:hidden p-2 rounded-xl text-zinc-900 hover:bg-black/5 active:scale-95 transition-all cursor-pointer"
+          onClick={() => setMobileMenuOpen(true)}
+          aria-label="Open Navigation Menu"
         >
-          {mobileMenuOpen ? (
-            <X className="w-6 h-6" />
-          ) : (
-            <Menu className="w-6 h-6" />
-          )}
+          <Menu className="w-6 h-6" />
         </button>
       </div>
 
-      {/* Mobile Drawer */}
-      {mobileMenuOpen && (
-        <div className="md:hidden bg-white/95 backdrop-blur-lg border-b border-zinc-200 px-6 py-6 space-y-4 shadow-lg animate-in fade-in slide-in-from-top-4 duration-200">
-          <nav className="flex flex-col space-y-3">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="text-base font-semibold text-zinc-900 hover:text-blue-600 transition-colors py-1"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {link.name}
-              </Link>
-            ))}
-          </nav>
-          <div className="pt-2 border-t border-zinc-100">
-            <Link href="/contact" onClick={() => setMobileMenuOpen(false)} className="block w-full">
-              <Button
-                variant="dark"
-                size="md"
-                className="w-full"
-              >
-                Get in Touch
-              </Button>
+      {/* ── HIGH-END MOBILE SIDE DRAWER NAVIGATION ── */}
+      {/* Backdrop */}
+      <div
+        className={cn(
+          'fixed inset-0 bg-black/70 backdrop-blur-sm z-50 transition-opacity duration-300 md:hidden',
+          mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+        )}
+        onClick={() => setMobileMenuOpen(false)}
+      />
+
+      {/* Side Sheet Drawer Panel */}
+      <aside
+        aria-label="Mobile Navigation"
+        className={cn(
+          'fixed inset-y-0 right-0 w-full max-w-[340px] sm:max-w-[380px] bg-zinc-950 text-white z-50 shadow-2xl flex flex-col justify-between p-6 sm:p-8 transition-transform duration-300 ease-out md:hidden border-l border-zinc-800',
+          mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+        )}
+      >
+        {/* Drawer Header */}
+        <div className="flex items-center justify-between pb-6 border-b border-zinc-800/80">
+          <div className="flex items-center gap-2.5">
+            <div className="w-8 h-8 rounded-lg bg-[#FFFD63] flex items-center justify-center text-black font-black text-base shadow-xs">
+              M
+            </div>
+            <div>
+              <span className="font-black text-lg tracking-tight text-white block leading-none">
+                MGE
+              </span>
+              <span className="text-[10px] text-zinc-400 font-mono tracking-wider uppercase">
+                Mother of Nightlife
+              </span>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => setMobileMenuOpen(false)}
+            className="w-10 h-10 rounded-full bg-zinc-900 hover:bg-zinc-800 text-zinc-400 hover:text-white flex items-center justify-center transition-colors cursor-pointer border border-zinc-800"
+            aria-label="Close Navigation Menu"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+
+        {/* Navigation Links */}
+        <nav className="py-6 flex-1 flex flex-col justify-center space-y-1">
+          {navLinks.map((link) => (
+            <Link
+              key={link.name}
+              href={link.href}
+              onClick={() => setMobileMenuOpen(false)}
+              className="group flex items-center justify-between py-3.5 px-3 rounded-xl hover:bg-zinc-900/80 transition-all"
+            >
+              <div className="flex items-baseline gap-3">
+                <span className="text-xs font-mono text-zinc-500 group-hover:text-[#FFFD63] transition-colors">
+                  {link.num}
+                </span>
+                <span className="text-2xl font-black tracking-tight uppercase text-zinc-100 group-hover:text-white group-hover:translate-x-1 transition-all">
+                  {link.name}
+                </span>
+              </div>
+              <ArrowUpRight className="w-5 h-5 text-zinc-600 group-hover:text-[#FFFD63] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all opacity-0 group-hover:opacity-100" />
             </Link>
+          ))}
+        </nav>
+
+        {/* Drawer Footer & Direct Channels */}
+        <div className="pt-6 border-t border-zinc-800/80 space-y-5">
+          {/* Direct Contacts Strip */}
+          <div className="space-y-2 text-xs text-zinc-400">
+            <a
+              href="mailto:motherofnightlife@gmail.com"
+              className="flex items-center gap-2 hover:text-white transition-colors"
+            >
+              <Mail className="w-3.5 h-3.5 text-[#FFFD63]" />
+              <span>motherofnightlife@gmail.com</span>
+            </a>
+            <a
+              href="tel:09025296372"
+              className="flex items-center gap-2 hover:text-white transition-colors"
+            >
+              <Phone className="w-3.5 h-3.5 text-[#FFFD63]" />
+              <span>09025296372</span>
+            </a>
+            <div className="flex items-center gap-2 text-zinc-500">
+              <MapPin className="w-3.5 h-3.5 text-zinc-600" />
+              <span>Port Harcourt, Nigeria</span>
+            </div>
+          </div>
+
+          {/* Bottom Action CTA */}
+          <Link
+            href="/contact"
+            onClick={() => setMobileMenuOpen(false)}
+            className="block w-full"
+          >
+            <Button
+              variant="primary"
+              size="lg"
+              className="w-full h-[52px] rounded-[15px] bg-[#FFFD63] text-black hover:bg-yellow-300 font-bold tracking-tight shadow-md border-0"
+            >
+              Get in Touch
+            </Button>
+          </Link>
+
+          {/* Instagram Social Pill */}
+          <div className="pt-1 flex items-center justify-between text-xs text-zinc-500">
+            <span>© {new Date().getFullYear()} M&amp;G Entertainment</span>
+            <a
+              href="https://www.instagram.com/_gypsynight?igsi=MThpY2g4ZDY4OHZwag=="
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-zinc-400 hover:text-white transition-colors"
+            >
+              <InstagramIcon className="w-3.5 h-3.5 text-[#E1306C]" />
+              <span>@_gypsynight</span>
+            </a>
           </div>
         </div>
-      )}
+      </aside>
     </header>
   );
 };

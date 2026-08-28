@@ -40,7 +40,7 @@ export const HowItWorks: React.FC = () => {
               <Button
                 variant="blue"
                 size="md"
-                className="bg-[#4B6BFB] hover:bg-blue-600 text-white font-medium text-sm px-6 py-2.5 rounded-full"
+                className="bg-[#833AB4] hover:bg-[#6D28D9] text-white font-medium text-sm px-6 py-2.5 rounded-full"
                 onClick={() => {
                   const el = document.getElementById('contact');
                   el?.scrollIntoView({ behavior: 'smooth' });
@@ -150,7 +150,7 @@ export const HowItWorks: React.FC = () => {
           <Button
             variant="blue"
             size="md"
-            className="bg-[#4B6BFB] hover:bg-blue-600 text-white font-medium text-sm px-8 py-3 rounded-[15px] sm:rounded-full w-full h-[52px]"
+            className="bg-[#833AB4] hover:bg-[#6D28D9] text-white font-medium text-sm px-8 py-3 rounded-[15px] sm:rounded-full w-full h-[52px]"
             onClick={() => {
               const el = document.getElementById('contact');
               el?.scrollIntoView({ behavior: 'smooth' });

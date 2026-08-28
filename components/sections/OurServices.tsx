@@ -85,8 +85,8 @@ export const OurServices: React.FC = () => {
           </p>
           <div className="hidden md:block">
             <Link
-              href="#how-it-works"
-              className="inline-flex items-center gap-1.5 text-sm sm:text-base font-semibold text-[#4B6BFB] hover:text-blue-700 transition-colors group"
+              href="/services"
+              className="inline-flex items-center gap-1.5 text-sm sm:text-base font-semibold text-[#833AB4] hover:text-[#6D28D9] transition-colors group"
             >
               <span>Explore all services</span>
               <span className="group-hover:translate-x-1 transition-transform">→</span>

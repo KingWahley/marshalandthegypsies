@@ -70,14 +70,14 @@ export const RecentProjects: React.FC = () => {
 
                 {/* Title */}
                 <div className="space-y-1">
-                  <h3 className="text-base font-bold tracking-tight text-zinc-950 group-hover:text-blue-600 transition-colors leading-snug">
+                  <h3 className="text-base font-bold tracking-tight text-zinc-950 group-hover:text-[#833AB4] transition-colors leading-snug">
                     {project.title}
                   </h3>
                 </div>
 
                 {/* Action Link */}
                 <div className="pt-0.5">
-                  <span className="text-xs font-semibold text-blue-600 inline-flex items-center gap-1">
+                  <span className="text-xs font-semibold text-[#833AB4] inline-flex items-center gap-1">
                     <span>Explore Project</span>
                     <ArrowUpRight className="w-3.5 h-3.5 shrink-0" />
                   </span>

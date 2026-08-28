@@ -169,7 +169,7 @@ export default function AboutPage() {
                   To remain the unrivaled benchmark of nightlife, cultivating a legacy where creativity is heavily protected, commercially viable, and culturally groundbreaking.
                 </p>
                 <div className="pt-2 border-t border-zinc-100 flex items-center gap-2 text-xs font-semibold text-zinc-400 uppercase tracking-wider">
-                  <ShieldCheck className="w-4 h-4 text-blue-500" />
+                  <ShieldCheck className="w-4 h-4 text-[#833AB4]" />
                   <span>Protected Creative Legacy</span>
                 </div>
               </div>
@@ -208,7 +208,7 @@ export default function AboutPage() {
                 {
                   title: 'Structured Architecture',
                   desc: 'Rigorous budget architecture, vendor networks, legal backing, and turnkey logistics that ensure flawless execution.',
-                  icon: <Layers className="w-5 h-5 text-indigo-500" />,
+                  icon: <Layers className="w-5 h-5 text-[#833AB4]" />,
                 },
                 {
                   title: 'Unapologetic Style',
@@ -223,7 +223,7 @@ export default function AboutPage() {
                 {
                   title: 'Street & Elite Fusion',
                   desc: 'Rooted directly in raw street energy and elevated by the prestige of five-star lounge hospitality and world-class production.',
-                  icon: <Target className="w-5 h-5 text-blue-500" />,
+                  icon: <Target className="w-5 h-5 text-[#833AB4]" />,
                 },
               ].map((dna, idx) => (
                 <div

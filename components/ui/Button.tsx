@@ -23,8 +23,8 @@ export const Button: React.FC<ButtonProps> = ({
   ...props
 }) => {
   const variantClasses = {
-    primary: 'bg-indigo-600 text-white hover:bg-indigo-700 shadow-sm transition-all duration-200 active:scale-[0.98]',
-    blue: 'bg-[#4B6BFB] text-white hover:bg-blue-600 shadow-sm transition-all duration-200 active:scale-[0.98]',
+    primary: 'bg-[#833AB4] text-white hover:bg-[#6D28D9] shadow-sm transition-all duration-200 active:scale-[0.98]',
+    blue: 'bg-[#833AB4] text-white hover:bg-[#6D28D9] shadow-sm transition-all duration-200 active:scale-[0.98]',
     dark: 'bg-black text-white hover:bg-zinc-800 transition-all duration-200 active:scale-[0.98]',
     white: 'bg-white text-zinc-900 border border-zinc-200 hover:bg-zinc-50 shadow-sm transition-all duration-200 active:scale-[0.98]',
     outline: 'bg-transparent border border-zinc-800 text-zinc-900 hover:bg-zinc-100 transition-all duration-200',

@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
 
 export const CallToAction: React.FC = () => {
@@ -14,16 +15,15 @@ export const CallToAction: React.FC = () => {
           Marshall &amp; The Gypsies is dedicated to celebrating nightlife culture. Let&apos;s create your next extraordinary event together.
         </p>
         <div className="pt-2 flex justify-center w-full">
-          <Button
-            variant="blue"
-            size="lg"
-            className="w-full sm:w-auto"
-            onClick={() => {
-              window.location.href = 'mailto:hello@mge-events.com';
-            }}
-          >
-            Get in Touch
-          </Button>
+          <Link href="/contact" className="w-full sm:w-auto">
+            <Button
+              variant="blue"
+              size="lg"
+              className="w-full sm:w-auto bg-[#833AB4] hover:bg-[#6D28D9] text-white"
+            >
+              Get in Touch
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

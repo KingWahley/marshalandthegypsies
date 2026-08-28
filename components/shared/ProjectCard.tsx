@@ -44,7 +44,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
 
       {/* Title & Optional Preview Text */}
       <div className="space-y-2 flex-1">
-        <h3 className="text-lg sm:text-xl font-bold tracking-tight text-zinc-950 group-hover:text-blue-600 transition-colors leading-snug">
+        <h3 className="text-lg sm:text-xl font-bold tracking-tight text-zinc-950 group-hover:text-[#833AB4] transition-colors leading-snug">
           {project.title}
         </h3>
 
@@ -57,7 +57,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
 
       {/* Bottom Text Link */}
       <div className="pt-1">
-        <span className="text-sm font-semibold text-blue-600 group-hover:text-blue-700 transition-colors inline-flex items-center gap-1">
+        <span className="text-sm font-semibold text-[#833AB4] group-hover:text-[#6D28D9] transition-colors inline-flex items-center gap-1">
           <span>Explore Project</span>
           <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </span>

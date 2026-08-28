@@ -17,7 +17,7 @@ export const Badge: React.FC<BadgeProps> = ({
     default: 'bg-zinc-100 text-zinc-800 border border-zinc-200/60',
     neutral: 'bg-white/80 backdrop-blur-xs text-zinc-900 border border-zinc-200 shadow-xs',
     outline: 'border border-zinc-300 text-zinc-700 bg-transparent',
-    blue: 'bg-blue-50 text-blue-700 border border-blue-200',
+    blue: 'bg-purple-50 text-[#833AB4] border-purple-200',
     yellow: 'bg-yellow-100 text-yellow-900 border border-yellow-300',
   };
 
