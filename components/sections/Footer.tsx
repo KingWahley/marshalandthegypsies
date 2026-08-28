@@ -72,23 +72,23 @@ export const Footer: React.FC = () => {
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
-                <Link href="#resources" className="hover:text-white transition-colors">
+                <Link href="/#resources" className="hover:text-white transition-colors">
                   Instagram Feed
                 </Link>
               </li>
               <li>
-                <Link href="#how-it-works" className="hover:text-white transition-colors">
+                <Link href="/#how-it-works" className="hover:text-white transition-colors">
                   How It Works
                 </Link>
               </li>
               <li>
-                <Link href="#services" className="hover:text-white transition-colors">
+                <Link href="/services" className="hover:text-white transition-colors">
                   Services
                 </Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-white transition-colors">
-                  Privacy Policy
+                <Link href="/about" className="hover:text-white transition-colors">
+                  About Us
                 </Link>
               </li>
             </ul>
@@ -101,18 +101,18 @@ export const Footer: React.FC = () => {
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
-                <Link href="#about" className="hover:text-white transition-colors">
-                  Team
+                <Link href="/about" className="hover:text-white transition-colors">
+                  Our Mission &amp; Vision
                 </Link>
               </li>
               <li>
-                <Link href="#about" className="hover:text-white transition-colors">
-                  Careers
+                <Link href="/about#overview" className="hover:text-white transition-colors">
+                  Executive Overview
                 </Link>
               </li>
               <li>
-                <Link href="#about" className="hover:text-white transition-colors">
-                  Brand Guidelines
+                <Link href="/about" className="hover:text-white transition-colors">
+                  Brand DNA
                 </Link>
               </li>
             </ul>

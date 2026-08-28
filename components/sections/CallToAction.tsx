@@ -11,7 +11,7 @@ export const CallToAction: React.FC = () => {
           The Night Life Begins Here
         </h2>
         <p className="text-sm sm:text-base md:text-lg text-zinc-600 max-w-2xl mx-auto leading-relaxed">
-          Marshall &amp; The Dyadics is dedicated to celebrating nightlife culture. Let&apos;s create your next extraordinary event together.
+          Marshall &amp; The Gypsies is dedicated to celebrating nightlife culture. Let&apos;s create your next extraordinary event together.
         </p>
         <div className="pt-2 flex justify-center w-full">
           <Button
