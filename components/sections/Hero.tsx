@@ -14,14 +14,12 @@ export const Hero: React.FC = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            // Attempt play; catch promise rejection (browser policy)
             video.play().catch(() => {});
           } else {
             video.pause();
           }
         });
       },
-      // Start pausing when < 10% of the video is visible
       { threshold: 0.1 }
     );
 
@@ -71,23 +69,45 @@ export const Hero: React.FC = () => {
             </button>
           </div>
         </div>
+      </div>
 
-        {/* Large Rounded Yellow Frame Container */}
+      {/* ── MOBILE: full-bleed video, no frame, no radius ── */}
+      <div className="block sm:hidden w-full relative aspect-video bg-zinc-950">
+        <video
+          ref={videoRef}
+          loop
+          muted
+          playsInline
+          preload="none"
+          poster="/images/NEXGEN-8083.jpg"
+          className="w-full h-full object-cover"
+        >
+          <source src="/video/hero-video.mp4" type="video/mp4" />
+        </video>
+      </div>
+
+      {/* ── DESKTOP: yellow framed container ── */}
+      <div className="hidden sm:block relative z-10 max-w-[1380px] mx-auto px-4 sm:px-8 lg:px-[65px]">
         <div className="relative bg-[#FFFD6A] rounded-[21px] p-3.5 sm:p-6 md:p-8 pb-0 sm:pb-0 md:pb-0 shadow-2xl border border-yellow-300/40 overflow-hidden">
-          {/* Video Container — aspect-ratio keeps layout stable before video loads */}
           <div className="bg-zinc-950 rounded-t-[21px] rounded-b-none overflow-hidden relative aspect-video w-full">
             <video
-              ref={videoRef}
               loop
               muted
               playsInline
               preload="none"
-              // Poster shows instantly — avoids blank black frame while video downloads
               poster="/images/NEXGEN-8083.jpg"
               className="w-full h-full object-cover"
-              // Tells the browser this resource is low-priority vs. above-the-fold images / CSS
-              // @ts-expect-error — fetchpriority is valid HTML but not yet in React types
-              fetchpriority="low"
+              ref={(el) => {
+                if (!el) return;
+                const obs = new IntersectionObserver(
+                  (entries) => {
+                    if (entries[0].isIntersecting) el.play().catch(() => {});
+                    else el.pause();
+                  },
+                  { threshold: 0.1 }
+                );
+                obs.observe(el);
+              }}
             >
               <source src="/video/hero-video.mp4" type="video/mp4" />
             </video>
