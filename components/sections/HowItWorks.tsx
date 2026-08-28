@@ -26,15 +26,15 @@ export const HowItWorks: React.FC = () => {
     <section id="how-it-works" className="py-16 md:py-24 bg-white border-b border-zinc-100">
       <div className="max-w-[1380px] mx-auto px-4 sm:px-8 lg:px-[65px]">
         {/* Top Header Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start pb-12 sm:pb-16 border-b border-zinc-200/70">
-          <div className="md:col-span-6">
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-zinc-950 font-sans leading-[1.08]">
-              How it<br />works
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 items-start pb-6 sm:pb-16 border-b border-zinc-200/70">
+          <div className="w-full md:col-span-6">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold sm:font-normal tracking-tight text-zinc-950 font-sans leading-tight sm:leading-[1.08]">
+              How it works
             </h2>
           </div>
           <div className="md:col-span-6 space-y-5 md:pt-2">
             <p className="text-base sm:text-lg lg:text-[20px] text-zinc-800 font-normal leading-relaxed max-w-xl font-sans">
-              Manage your experience from start to finish, from integrations to registration and from interactive stage elements to post-event data, it&apos;s all here.
+              From initial creative vision to absolute on-the-ground execution we orchestrate every stage, sound, talent lineup, and VIP detail to deliver unforgettable nightlife experiences at scale. We use a three steps process that works every time.
             </p>
             <div className="hidden md:block">
               <Button
@@ -55,7 +55,7 @@ export const HowItWorks: React.FC = () => {
         {/* Steps Stack */}
         <div className="divide-y divide-zinc-200/70">
           {/* Step 1: Imagine */}
-          <div className="py-10 sm:py-14 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center group">
+          <div className="py-6 sm:py-14 grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-16 items-center group">
             {/* Left Description */}
             <div className="lg:col-span-4 space-y-2.5">
               <span className="text-xs font-normal text-zinc-500 tracking-wide">
@@ -85,7 +85,7 @@ export const HowItWorks: React.FC = () => {
           </div>
 
           {/* Step 2: Curate */}
-          <div className="py-10 sm:py-14 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center group">
+          <div className="py-6 sm:py-14 grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-16 items-center group">
             {/* Left Description */}
             <div className="lg:col-span-4 space-y-2.5">
               <span className="text-xs font-normal text-zinc-500 tracking-wide">
@@ -115,7 +115,7 @@ export const HowItWorks: React.FC = () => {
           </div>
 
           {/* Step 3: Deliver */}
-          <div className="py-10 sm:py-14 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center group">
+          <div className="py-6 sm:py-14 grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-16 items-center group">
             {/* Left Description */}
             <div className="lg:col-span-4 space-y-2.5">
               <span className="text-xs font-normal text-zinc-500 tracking-wide">
@@ -146,11 +146,11 @@ export const HowItWorks: React.FC = () => {
         </div>
 
         {/* Bottom Learn More Button on Mobile */}
-        <div className="flex justify-center pt-8 md:hidden">
+        <div className="flex justify-center pt-5 sm:pt-8 md:hidden w-full">
           <Button
             variant="blue"
             size="md"
-            className="bg-[#4B6BFB] hover:bg-blue-600 text-white font-medium text-sm px-8 py-3 rounded-full"
+            className="bg-[#4B6BFB] hover:bg-blue-600 text-white font-medium text-sm px-8 py-3 rounded-[15px] sm:rounded-full w-full h-[52px]"
             onClick={() => {
               const el = document.getElementById('contact');
               el?.scrollIntoView({ behavior: 'smooth' });

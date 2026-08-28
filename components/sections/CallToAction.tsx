@@ -13,10 +13,11 @@ export const CallToAction: React.FC = () => {
         <p className="text-sm sm:text-base md:text-lg text-zinc-600 max-w-2xl mx-auto leading-relaxed">
           Marshall &amp; The Dyadics is dedicated to celebrating nightlife culture. Let&apos;s create your next extraordinary event together.
         </p>
-        <div className="pt-2 flex justify-center">
+        <div className="pt-2 flex justify-center w-full">
           <Button
             variant="blue"
             size="lg"
+            className="w-full sm:w-auto"
             onClick={() => {
               window.location.href = 'mailto:hello@mge-events.com';
             }}

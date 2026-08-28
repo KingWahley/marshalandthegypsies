@@ -173,14 +173,14 @@ export const ResourceGuides: React.FC = () => {
         </div>
 
         {/* Bottom CTA to Instagram */}
-        <div className="flex justify-center">
+        <div className="flex justify-center w-full">
           <Link
             href={INSTAGRAM_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2.5 bg-gradient-to-r from-[#833AB4] via-[#FD1D1D] to-[#FCB045] hover:opacity-95 text-white text-sm font-semibold px-8 py-3.5 rounded-full shadow-md transition-all duration-200 active:scale-[0.98]"
+            className="inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-[#833AB4] via-[#FD1D1D] to-[#FCB045] hover:opacity-95 text-white text-sm font-semibold px-8 py-3.5 rounded-[15px] sm:rounded-full shadow-md transition-all duration-200 active:scale-[0.98] w-full sm:w-auto h-[52px] sm:h-auto text-center"
           >
-            <InstagramIcon className="w-4 h-4" />
+            <InstagramIcon className="w-4 h-4 shrink-0" />
             <span>Follow @_gypsynight on Instagram</span>
           </Link>
         </div>

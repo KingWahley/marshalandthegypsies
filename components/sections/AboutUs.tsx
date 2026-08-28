@@ -19,11 +19,11 @@ export const AboutUs: React.FC = () => {
                 Marshall &amp; The Gypsies (M&amp;G) Entertainment is a premier, full-service entertainment powerhouse and lifestyle institution. Renowned as the &ldquo;Mother of Nightlife&rdquo;, the brand has established itself as the beating heart of experiential entertainment, high-energy events, and elite talent curation.
               </p>
             </div>
-            <div className="pt-1">
+            <div className="pt-1 w-full sm:w-auto">
               <Button
                 variant="dark"
                 size="md"
-                className="bg-[#231F20] hover:bg-black text-white px-6 py-2.5 text-xs sm:text-sm font-normal rounded-full transition-colors"
+                className="bg-[#231F20] hover:bg-black text-white px-6 py-2.5 text-xs sm:text-sm font-normal rounded-[15px] sm:rounded-full transition-colors w-full sm:w-auto h-[52px] sm:h-auto"
                 onClick={() => {
                   const el = document.getElementById('services');
                   el?.scrollIntoView({ behavior: 'smooth' });
@@ -34,9 +34,9 @@ export const AboutUs: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Column Image - Centered on mobile with full 21px radius, right-extended on desktop */}
-          <div className="lg:col-span-7 w-full flex justify-center">
-            <div className="relative aspect-16/10 lg:aspect-16/11 w-full max-w-2xl lg:max-w-none rounded-[21px] lg:rounded-r-none overflow-hidden shadow-lg bg-zinc-900 border border-zinc-100 group">
+          {/* Right Column Image - Full width on mobile without padding or border radius */}
+          <div className="lg:col-span-7 -mx-4 sm:mx-0 w-[calc(100%+2rem)] sm:w-full flex justify-center">
+            <div className="relative aspect-16/10 lg:aspect-16/11 w-full max-w-2xl lg:max-w-none rounded-none sm:rounded-[21px] lg:rounded-r-none overflow-hidden shadow-lg bg-zinc-900 border-0 sm:border border-zinc-100 group">
               <Image
                 src="/images/NEXGEN-8243.jpg"
                 alt="Crowd dancing and celebrating at M&G Entertainment nightlife event"
