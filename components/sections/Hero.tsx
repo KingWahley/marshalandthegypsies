@@ -327,7 +327,7 @@ export const Hero: React.FC = () => {
       <div className="relative z-10 max-w-[1380px] mx-auto px-4 sm:px-8 lg:px-[65px]">
         {/* Header Text */}
         <div className="text-center max-w-4xl mx-auto space-y-4 mb-10 md:mb-12">
-          <h1 className="text-center font-black tracking-tight text-[#0A0B1E] uppercase text-[34px] sm:text-[48px] lg:text-[63.11px] lg:leading-[71.11px] font-sans">
+          <h1 className="text-center font-black tracking-tight text-[#0A0B1E] uppercase text-[32px] sm:text-[48px] lg:text-[63.11px] leading-[38px] sm:leading-[54px] lg:leading-[71.11px] font-sans">
             THE MOTHER OF NIGHTLIFE
           </h1>
           <p className="text-center text-[#0A0B1E] text-sm sm:text-base font-light leading-relaxed sm:leading-[24.89px] max-w-2xl mx-auto px-4">
