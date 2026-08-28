@@ -3,6 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { ArrowUpRight } from 'lucide-react';
 
 interface ServiceCardProps {
   title: string;
@@ -43,9 +44,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
       <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 space-y-2 text-left">
         <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight flex items-center justify-between">
           <span>{title}</span>
-          <span className="text-zinc-400 group-hover:text-white group-hover:translate-x-1 transition-all">
-            ↗
-          </span>
+          <ArrowUpRight className="w-6 h-6 text-zinc-400 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
         </h3>
         <p className="text-xs sm:text-sm text-zinc-300 line-clamp-3 leading-relaxed font-normal">
           {description}

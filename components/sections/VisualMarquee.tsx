@@ -28,16 +28,8 @@ const ROW2_IMAGES = [
 export const VisualMarquee: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-
     let animationFrameId: number;
 
     const handleScroll = () => {
@@ -60,42 +52,55 @@ export const VisualMarquee: React.FC = () => {
     handleScroll();
 
     return () => {
-      window.removeEventListener('resize', checkMobile);
       window.removeEventListener('scroll', onScroll);
       cancelAnimationFrame(animationFrameId);
     };
   }, []);
 
-  // Top row moves left as progress increases on desktop, stationary / native on mobile
-  const topTranslateX = isMobile ? 0 : -scrollProgress * 700;
-  // Bottom row moves right as progress increases on desktop, stationary / native on mobile
-  const bottomTranslateX = isMobile ? 0 : -700 + scrollProgress * 700;
+  // Top row moves left as progress increases on desktop
+  const topTranslateX = -scrollProgress * 700;
+  // Bottom row moves right as progress increases on desktop
+  const bottomTranslateX = -700 + scrollProgress * 700;
 
   return (
     <section
       ref={sectionRef}
-      className="py-10 md:py-16 bg-white overflow-hidden border-b border-zinc-100"
+      className="py-0 md:py-16 bg-white overflow-hidden border-b border-zinc-100"
     >
-      <div className="space-y-4 sm:space-y-6">
-        {/* Row 1: Scroll-powered slide towards LEFT on desktop */}
-        <div className="overflow-x-auto md:overflow-hidden w-full no-scrollbar">
+      {/* Mobile View: Display ONLY ONE image - Full width with NO border radius */}
+      <div className="md:hidden w-full">
+        <div className="w-full h-[220px] sm:h-[260px] relative bg-zinc-900 overflow-hidden rounded-none">
+          <Image
+            src={ROW1_IMAGES[0]}
+            alt="Nightlife gallery visual"
+            fill
+            sizes="100vw"
+            className="object-cover"
+          />
+        </div>
+      </div>
+
+      {/* Desktop View: Dual Scroll-powered marquee rows with stadium radius */}
+      <div className="hidden md:block space-y-6">
+        {/* Row 1: Scroll-powered slide towards LEFT */}
+        <div className="overflow-hidden w-full">
           <div
-            className={`flex gap-4 sm:gap-6 ${isMobile ? '' : 'transition-transform duration-100 ease-out will-change-transform'}`}
+            className="flex gap-6 transition-transform duration-100 ease-out will-change-transform"
             style={{
-              transform: isMobile ? 'none' : `translate3d(${topTranslateX}px, 0, 0)`,
+              transform: `translate3d(${topTranslateX}px, 0, 0)`,
               width: 'max-content',
             }}
           >
-            {(isMobile ? ROW1_IMAGES : [...ROW1_IMAGES, ...ROW1_IMAGES, ...ROW1_IMAGES]).map((src, index) => (
+            {[...ROW1_IMAGES, ...ROW1_IMAGES, ...ROW1_IMAGES].map((src, index) => (
               <div
                 key={`scroll-row1-${index}`}
-                className="w-[280px] sm:w-[350px] lg:w-[434.51px] h-[90px] sm:h-[115px] lg:h-[140.57px] rounded-[454.4px] overflow-hidden shrink-0 shadow-sm border border-zinc-300/80 relative bg-zinc-900 group cursor-pointer hover:scale-105 transition-transform duration-300"
+                className="w-[434.51px] h-[140.57px] rounded-[454.4px] overflow-hidden shrink-0 shadow-sm border border-zinc-300/80 relative bg-zinc-900 group cursor-pointer hover:scale-105 transition-transform duration-300"
               >
                 <Image
                   src={src}
                   alt={`Nightlife gallery visual ${index + 1}`}
                   fill
-                  sizes="(max-width: 1024px) 350px, 435px"
+                  sizes="435px"
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
                 />
               </div>
@@ -103,25 +108,25 @@ export const VisualMarquee: React.FC = () => {
           </div>
         </div>
 
-        {/* Row 2: Scroll-powered slide in OPPOSITE direction (towards RIGHT) on desktop */}
-        <div className="overflow-x-auto md:overflow-hidden w-full no-scrollbar">
+        {/* Row 2: Scroll-powered slide in OPPOSITE direction (towards RIGHT) */}
+        <div className="overflow-hidden w-full">
           <div
-            className={`flex gap-4 sm:gap-6 ${isMobile ? '' : 'transition-transform duration-100 ease-out will-change-transform'}`}
+            className="flex gap-6 transition-transform duration-100 ease-out will-change-transform"
             style={{
-              transform: isMobile ? 'none' : `translate3d(${bottomTranslateX}px, 0, 0)`,
+              transform: `translate3d(${bottomTranslateX}px, 0, 0)`,
               width: 'max-content',
             }}
           >
-            {(isMobile ? ROW2_IMAGES : [...ROW2_IMAGES, ...ROW2_IMAGES, ...ROW2_IMAGES]).map((src, index) => (
+            {[...ROW2_IMAGES, ...ROW2_IMAGES, ...ROW2_IMAGES].map((src, index) => (
               <div
                 key={`scroll-row2-${index}`}
-                className="w-[280px] sm:w-[350px] lg:w-[434.51px] h-[90px] sm:h-[115px] lg:h-[140.57px] rounded-[454.4px] overflow-hidden shrink-0 shadow-sm border border-zinc-300/80 relative bg-zinc-900 group cursor-pointer hover:scale-105 transition-transform duration-300"
+                className="w-[434.51px] h-[140.57px] rounded-[454.4px] overflow-hidden shrink-0 shadow-sm border border-zinc-300/80 relative bg-zinc-900 group cursor-pointer hover:scale-105 transition-transform duration-300"
               >
                 <Image
                   src={src}
                   alt={`Nightlife gallery visual ${index + 1}`}
                   fill
-                  sizes="(max-width: 1024px) 350px, 435px"
+                  sizes="435px"
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
                 />
               </div>
