@@ -28,12 +28,20 @@ const ROW2_IMAGES = [
 export const VisualMarquee: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
     let animationFrameId: number;
 
     const handleScroll = () => {
-      if (!sectionRef.current) return;
+      if (window.innerWidth < 768 || !sectionRef.current) return;
       const rect = sectionRef.current.getBoundingClientRect();
       const windowHeight = window.innerHeight;
 
@@ -52,15 +60,16 @@ export const VisualMarquee: React.FC = () => {
     handleScroll();
 
     return () => {
+      window.removeEventListener('resize', checkMobile);
       window.removeEventListener('scroll', onScroll);
       cancelAnimationFrame(animationFrameId);
     };
   }, []);
 
-  // Top row moves left as progress increases
-  const topTranslateX = -scrollProgress * 700;
-  // Bottom row moves right as progress increases
-  const bottomTranslateX = -700 + scrollProgress * 700;
+  // Top row moves left as progress increases on desktop, stationary / native on mobile
+  const topTranslateX = isMobile ? 0 : -scrollProgress * 700;
+  // Bottom row moves right as progress increases on desktop, stationary / native on mobile
+  const bottomTranslateX = isMobile ? 0 : -700 + scrollProgress * 700;
 
   return (
     <section
@@ -68,16 +77,16 @@ export const VisualMarquee: React.FC = () => {
       className="py-10 md:py-16 bg-white overflow-hidden border-b border-zinc-100"
     >
       <div className="space-y-4 sm:space-y-6">
-        {/* Row 1: Scroll-powered slide towards LEFT */}
-        <div className="overflow-hidden w-full">
+        {/* Row 1: Scroll-powered slide towards LEFT on desktop */}
+        <div className="overflow-x-auto md:overflow-hidden w-full no-scrollbar">
           <div
-            className="flex gap-4 sm:gap-6 transition-transform duration-100 ease-out will-change-transform"
+            className={`flex gap-4 sm:gap-6 ${isMobile ? '' : 'transition-transform duration-100 ease-out will-change-transform'}`}
             style={{
-              transform: `translate3d(${topTranslateX}px, 0, 0)`,
+              transform: isMobile ? 'none' : `translate3d(${topTranslateX}px, 0, 0)`,
               width: 'max-content',
             }}
           >
-            {[...ROW1_IMAGES, ...ROW1_IMAGES, ...ROW1_IMAGES].map((src, index) => (
+            {(isMobile ? ROW1_IMAGES : [...ROW1_IMAGES, ...ROW1_IMAGES, ...ROW1_IMAGES]).map((src, index) => (
               <div
                 key={`scroll-row1-${index}`}
                 className="w-[280px] sm:w-[350px] lg:w-[434.51px] h-[90px] sm:h-[115px] lg:h-[140.57px] rounded-[454.4px] overflow-hidden shrink-0 shadow-sm border border-zinc-300/80 relative bg-zinc-900 group cursor-pointer hover:scale-105 transition-transform duration-300"
@@ -94,16 +103,16 @@ export const VisualMarquee: React.FC = () => {
           </div>
         </div>
 
-        {/* Row 2: Scroll-powered slide in OPPOSITE direction (towards RIGHT) */}
-        <div className="overflow-hidden w-full">
+        {/* Row 2: Scroll-powered slide in OPPOSITE direction (towards RIGHT) on desktop */}
+        <div className="overflow-x-auto md:overflow-hidden w-full no-scrollbar">
           <div
-            className="flex gap-4 sm:gap-6 transition-transform duration-100 ease-out will-change-transform"
+            className={`flex gap-4 sm:gap-6 ${isMobile ? '' : 'transition-transform duration-100 ease-out will-change-transform'}`}
             style={{
-              transform: `translate3d(${bottomTranslateX}px, 0, 0)`,
+              transform: isMobile ? 'none' : `translate3d(${bottomTranslateX}px, 0, 0)`,
               width: 'max-content',
             }}
           >
-            {[...ROW2_IMAGES, ...ROW2_IMAGES, ...ROW2_IMAGES].map((src, index) => (
+            {(isMobile ? ROW2_IMAGES : [...ROW2_IMAGES, ...ROW2_IMAGES, ...ROW2_IMAGES]).map((src, index) => (
               <div
                 key={`scroll-row2-${index}`}
                 className="w-[280px] sm:w-[350px] lg:w-[434.51px] h-[90px] sm:h-[115px] lg:h-[140.57px] rounded-[454.4px] overflow-hidden shrink-0 shadow-sm border border-zinc-300/80 relative bg-zinc-900 group cursor-pointer hover:scale-105 transition-transform duration-300"

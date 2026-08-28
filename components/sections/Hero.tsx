@@ -2,6 +2,19 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
+import {
+  Play,
+  Video,
+  Share2,
+  ThumbsUp,
+  List,
+  MessageSquare,
+  FileText,
+  Users,
+  X,
+  ChevronLeft,
+  ChevronRight,
+} from 'lucide-react';
 
 // 20 Tiles matching the 4 rows x 5 columns grid exactly
 type TileType =
@@ -273,60 +286,32 @@ export const Hero: React.FC = () => {
   const sidebarButtons = [
     {
       name: 'Play',
-      icon: (
-        <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-          <path d="M8 5v14l11-7z" />
-        </svg>
-      ),
+      icon: <Play className="w-4 h-4 fill-current" />,
       active: true,
     },
     {
       name: 'Video',
-      icon: (
-        <svg className="w-4 h-4 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="2">
-          <path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-        </svg>
-      ),
+      icon: <Video className="w-4 h-4" />,
     },
     {
       name: 'Share',
-      icon: (
-        <svg className="w-4 h-4 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="2">
-          <path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
-        </svg>
-      ),
+      icon: <Share2 className="w-4 h-4" />,
     },
     {
       name: 'React',
-      icon: (
-        <svg className="w-4 h-4 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="2">
-          <path d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
-        </svg>
-      ),
+      icon: <ThumbsUp className="w-4 h-4" />,
     },
     {
       name: 'Queue',
-      icon: (
-        <svg className="w-4 h-4 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="2">
-          <path d="M4 6h16M4 10h16M4 14h16M4 18h16" />
-        </svg>
-      ),
+      icon: <List className="w-4 h-4" />,
     },
     {
       name: 'Chat',
-      icon: (
-        <svg className="w-4 h-4 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="2">
-          <path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-        </svg>
-      ),
+      icon: <MessageSquare className="w-4 h-4" />,
     },
     {
       name: 'Notes',
-      icon: (
-        <svg className="w-4 h-4 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="2">
-          <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-        </svg>
-      ),
+      icon: <FileText className="w-4 h-4" />,
     },
     {
       name: 'Record',
@@ -345,18 +330,15 @@ export const Hero: React.FC = () => {
           <h1 className="text-center font-black tracking-tight text-[#0A0B1E] uppercase text-[34px] sm:text-[48px] lg:text-[63.11px] lg:leading-[71.11px] font-sans">
             THE MOTHER OF NIGHTLIFE
           </h1>
-          <div className="text-center text-[#0A0B1E] text-[15px] sm:text-[16px] font-light leading-[24.89px] max-w-2xl mx-auto space-y-1">
-            <p>Where culture, talent, and premium experiences converge.</p>
-            <p>
-              We create, curate, and execute unforgettable moments that set the tempo for modern nightlife.
-            </p>
-          </div>
+          <p className="text-center text-[#0A0B1E] text-sm sm:text-base font-light leading-relaxed sm:leading-[24.89px] max-w-2xl mx-auto px-4">
+            Where culture, talent, and premium experiences converge. We create, curate, and execute unforgettable moments that set the tempo for modern nightlife.
+          </p>
 
-          {/* Buttons: Get Started & How It Works */}
-          <div className="flex items-center justify-center gap-4 pt-2">
+          {/* Buttons: Column on mobile, row on desktop */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 pt-2 w-full max-w-xs sm:max-w-none mx-auto">
             <button
               type="button"
-              className="inline-flex items-center justify-center cursor-pointer select-none tracking-tight leading-none rounded-full bg-black text-white hover:bg-zinc-800 transition-all duration-200 active:scale-[0.98] h-[52px] sm:h-[56px] px-8 sm:px-9 text-base sm:text-[17px] font-medium gap-3 shadow-sm"
+              className="inline-flex items-center justify-center cursor-pointer select-none tracking-tight leading-none rounded-full bg-black text-white hover:bg-zinc-800 transition-all duration-200 active:scale-[0.98] h-[52px] sm:h-[56px] px-8 sm:px-9 text-base sm:text-[17px] font-medium gap-3 shadow-sm w-full sm:w-auto"
               onClick={() => {
                 const el = document.getElementById('contact');
                 el?.scrollIntoView({ behavior: 'smooth' });
@@ -369,7 +351,7 @@ export const Hero: React.FC = () => {
             </button>
             <button
               type="button"
-              className="inline-flex items-center justify-center cursor-pointer select-none tracking-tight leading-none rounded-full bg-white text-[#0A0B1E] border border-zinc-200 hover:bg-zinc-50 transition-all duration-200 active:scale-[0.98] h-[52px] sm:h-[56px] px-8 sm:px-9 text-base sm:text-[17px] font-medium shadow-sm"
+              className="inline-flex items-center justify-center cursor-pointer select-none tracking-tight leading-none rounded-full bg-white text-[#0A0B1E] border border-zinc-200 hover:bg-zinc-50 transition-all duration-200 active:scale-[0.98] h-[52px] sm:h-[56px] px-8 sm:px-9 text-base sm:text-[17px] font-medium shadow-sm w-full sm:w-auto"
               onClick={() => {
                 const el = document.getElementById('how-it-works');
                 el?.scrollIntoView({ behavior: 'smooth' });
@@ -449,18 +431,14 @@ export const Hero: React.FC = () => {
                     </div>
 
                     {/* Attendees Pill */}
-                    <div className="inline-flex items-center gap-1 bg-zinc-100 rounded-full px-2.5 py-1 text-[11px] font-semibold text-zinc-700 border border-zinc-200/60">
-                      <svg className="w-3 h-3 text-zinc-500" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
-                      </svg>
+                    <div className="inline-flex items-center gap-1.5 bg-zinc-100 rounded-full px-2.5 py-1 text-[11px] font-semibold text-zinc-700 border border-zinc-200/60">
+                      <Users className="w-3 h-3 text-zinc-500" />
                       <span>12/10</span>
                     </div>
 
                     {/* Pink End/Action Pill */}
                     <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#FB7185] flex items-center justify-center text-white shadow-xs cursor-pointer hover:bg-rose-500 transition-colors">
-                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                      </svg>
+                      <X className="w-3.5 h-3.5" />
                     </div>
                   </div>
                 </div>
@@ -497,10 +475,10 @@ export const Hero: React.FC = () => {
                 {/* Bottom Carousel / Pagination Navigation */}
                 <div className="flex items-center justify-center gap-2 pt-3 pb-1">
                   <button
-                    className="w-5 h-5 rounded-full flex items-center justify-center text-zinc-400 hover:text-zinc-700 text-xs font-bold transition-colors"
+                    className="w-5 h-5 rounded-full flex items-center justify-center text-zinc-400 hover:text-zinc-700 transition-colors"
                     aria-label="Previous page"
                   >
-                    ‹
+                    <ChevronLeft className="w-3.5 h-3.5" />
                   </button>
                   <div className="flex items-center gap-1.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-zinc-800" />
@@ -508,10 +486,10 @@ export const Hero: React.FC = () => {
                     <span className="w-1.5 h-1.5 rounded-full bg-zinc-300" />
                   </div>
                   <button
-                    className="w-5 h-5 rounded-full flex items-center justify-center text-zinc-700 hover:text-black text-xs font-bold transition-colors"
+                    className="w-5 h-5 rounded-full flex items-center justify-center text-zinc-700 hover:text-black transition-colors"
                     aria-label="Next page"
                   >
-                    ›
+                    <ChevronRight className="w-3.5 h-3.5" />
                   </button>
                 </div>
               </div>

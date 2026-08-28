@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import { Play, Plus } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 
 // Reusable Arrow SVG provided in feedback
@@ -70,11 +71,11 @@ export const HowItWorks: React.FC = () => {
               </p>
             </div>
 
-            {/* Right Stadium Pill Mockup (Reduced height) */}
+            {/* Right Stadium Pill Mockup (21px radius on mobile, pill on desktop) */}
             <div className="lg:col-span-8">
-              <div className="relative h-36 sm:h-40 md:h-[175px] rounded-full overflow-hidden bg-gradient-to-r from-[#D8B4E2] via-[#F8C0C8] to-[#93C5FD] p-2 sm:p-2.5 shadow-md border border-zinc-200/60 flex items-center justify-between">
+              <div className="relative h-36 sm:h-40 md:h-[175px] rounded-[21px] md:rounded-full overflow-hidden bg-gradient-to-r from-[#D8B4E2] via-[#F8C0C8] to-[#93C5FD] p-2 sm:p-2.5 shadow-md border border-zinc-200/60 flex items-center justify-between">
                 {/* Left Side: Dark Production Control Panel UI */}
-                <div className="w-1/2 h-full bg-[#18181B] rounded-l-full sm:rounded-l-3xl rounded-r-xl p-2.5 sm:p-3 text-white flex flex-col justify-between shadow-xl relative overflow-hidden border border-zinc-800">
+                <div className="w-1/2 h-full bg-[#18181B] rounded-[16px] md:rounded-l-full md:rounded-r-xl p-2.5 sm:p-3 text-white flex flex-col justify-between shadow-xl relative overflow-hidden border border-zinc-800">
                   {/* Top reminder */}
                   <p className="text-[8px] sm:text-[9px] text-zinc-400 leading-tight truncate">
                     Remember to open doors, press record, and invite speakers to the green room
@@ -92,7 +93,7 @@ export const HowItWorks: React.FC = () => {
                       </div>
                     </div>
                     <span className="w-4 h-4 rounded-full bg-emerald-500 flex items-center justify-center text-white shrink-0">
-                      <svg className="w-2 h-2 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+                      <Play className="w-2 h-2 fill-current" />
                     </span>
                   </div>
 
@@ -100,7 +101,7 @@ export const HowItWorks: React.FC = () => {
                   <div className="flex items-center justify-between text-[9px] text-zinc-300 px-1">
                     <span className="font-mono text-zinc-400">1:30</span>
                     <span className="text-[8px] text-zinc-400">Countdown timer</span>
-                    <span className="text-zinc-500">+</span>
+                    <Plus className="w-2.5 h-2.5 text-zinc-500" />
                   </div>
 
                   {/* Tag Pill */}
@@ -110,7 +111,7 @@ export const HowItWorks: React.FC = () => {
                 </div>
 
                 {/* Right Side: Big 1:30 Backdrop */}
-                <div className="w-1/2 h-full relative flex items-center justify-center overflow-hidden rounded-r-full">
+                <div className="w-1/2 h-full relative flex items-center justify-center overflow-hidden rounded-[16px] md:rounded-r-full">
                   <Image
                     src="https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?q=80&w=600&auto=format&fit=crop"
                     alt="Desert dunes background"
@@ -141,13 +142,13 @@ export const HowItWorks: React.FC = () => {
               </p>
             </div>
 
-            {/* Right Stadium Pill Mockup (Reduced height) */}
+            {/* Right Stadium Pill Mockup (21px radius on mobile, pill on desktop) */}
             <div className="lg:col-span-8">
-              <div className="relative h-36 sm:h-40 md:h-[175px] rounded-full overflow-hidden bg-gradient-to-r from-[#F87171] via-[#C084FC] to-[#818CF8] p-2 sm:p-2.5 shadow-md border border-zinc-200/60 flex items-center justify-between">
+              <div className="relative h-36 sm:h-40 md:h-[175px] rounded-[21px] md:rounded-full overflow-hidden bg-gradient-to-r from-[#F87171] via-[#C084FC] to-[#818CF8] p-2 sm:p-2.5 shadow-md border border-zinc-200/60 flex items-center justify-between">
                 {/* Video Call Frame on Laptop */}
-                <div className="w-full h-full bg-[#18181B] rounded-full p-2 text-white flex items-center shadow-xl relative overflow-hidden border border-zinc-700/50">
+                <div className="w-full h-full bg-[#18181B] rounded-[16px] md:rounded-full p-2 text-white flex items-center shadow-xl relative overflow-hidden border border-zinc-700/50">
                   {/* Photo of Speaker / Curator */}
-                  <div className="relative w-1/2 h-full rounded-l-full overflow-hidden">
+                  <div className="relative w-1/2 h-full rounded-l-[16px] md:rounded-l-full overflow-hidden">
                     <Image
                       src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600&auto=format&fit=crop"
                       alt="Curator"
@@ -157,7 +158,7 @@ export const HowItWorks: React.FC = () => {
                   </div>
 
                   {/* Interactive Poll Component on the right */}
-                  <div className="w-1/2 h-full bg-zinc-900/90 backdrop-blur-md rounded-r-full p-2.5 sm:p-3 flex flex-col justify-center space-y-1 border-l border-zinc-800">
+                  <div className="w-1/2 h-full bg-zinc-900/90 backdrop-blur-md rounded-r-[16px] md:rounded-r-full p-2.5 sm:p-3 flex flex-col justify-center space-y-1 border-l border-zinc-800">
                     <p className="text-[10px] sm:text-[11px] font-semibold text-zinc-200 truncate">
                       How are you feeling?
                     </p>
@@ -201,11 +202,11 @@ export const HowItWorks: React.FC = () => {
               </p>
             </div>
 
-            {/* Right Stadium Pill Mockup (Reduced height) */}
+            {/* Right Stadium Pill Mockup (21px radius on mobile, pill on desktop) */}
             <div className="lg:col-span-8">
-              <div className="relative h-36 sm:h-40 md:h-[175px] rounded-full overflow-hidden bg-gradient-to-r from-[#F87171] via-[#991B1B] to-[#1E1B4B] p-2 sm:p-2.5 shadow-md border border-zinc-200/60 flex items-center justify-center">
+              <div className="relative h-36 sm:h-40 md:h-[175px] rounded-[21px] md:rounded-full overflow-hidden bg-gradient-to-r from-[#F87171] via-[#991B1B] to-[#1E1B4B] p-2 sm:p-2.5 shadow-md border border-zinc-200/60 flex items-center justify-center">
                 {/* Sleek Analytics UI Card */}
-                <div className="w-full h-full bg-[#18181B] rounded-full p-3 sm:p-3.5 text-white flex items-center justify-between shadow-xl border border-zinc-800">
+                <div className="w-full h-full bg-[#18181B] rounded-[16px] md:rounded-full p-3 sm:p-3.5 text-white flex items-center justify-between shadow-xl border border-zinc-800">
                   {/* Left Mini Sidebar */}
                   <div className="w-1/3 border-r border-zinc-800 pr-2.5 space-y-0.5 hidden sm:block">
                     <p className="text-[8px] text-zinc-400">← All events</p>

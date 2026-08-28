@@ -86,7 +86,7 @@ export const OurServices: React.FC = () => {
           <p className="text-black text-base sm:text-lg lg:text-[22.35px] font-normal leading-relaxed lg:leading-[39.5px] tracking-[-0.202px] max-w-4xl font-sans">
             From concept to grand scale, we organize premier festivals, club events, brand activations, private soirées, VIP hospitality, and holistic event solutions. We craft experiences with unparalleled precision, atmosphere, and high-energy excitement.
           </p>
-          <div>
+          <div className="hidden md:block">
             <Link
               href="#how-it-works"
               className="inline-flex items-center gap-1.5 text-sm sm:text-base font-semibold text-[#4B6BFB] hover:text-blue-700 transition-colors group"
