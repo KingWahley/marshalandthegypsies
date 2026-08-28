@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 // Clean SVG for Instagram
 const InstagramIcon: React.FC<{ className?: string }> = ({ className = 'w-4 h-4' }) => (
@@ -18,9 +19,15 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8 lg:gap-12 pb-12 border-b border-zinc-800/80">
           {/* Brand Mark */}
           <div className="col-span-2 md:col-span-1 space-y-4">
-            <Link href="/" className="inline-flex items-center gap-2">
-              <div className="w-8 h-8 rounded-md bg-white flex items-center justify-center text-black font-black text-base tracking-tighter">
-                M
+            <Link href="/" className="inline-flex items-center gap-2.5 group">
+              <div className="relative w-8 h-8 rounded-lg overflow-hidden border border-zinc-800 bg-zinc-900 group-hover:scale-105 transition-transform shrink-0">
+                <Image
+                  src="/images/mge-logo.jpeg"
+                  alt="MGE Logo"
+                  fill
+                  sizes="32px"
+                  className="object-cover"
+                />
               </div>
               <span className="font-bold text-base text-white tracking-tight">
                 MGE

@@ -9,6 +9,7 @@ import { Footer } from '@/components/sections/Footer';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import { PillarCard } from '@/components/shared/PillarCard';
+import { ScrollReveal } from '@/components/ui/ScrollReveal';
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 const PILLARS = [
@@ -109,7 +110,7 @@ export default function ServicesPage() {
       <Navbar />
 
       <main>
-        {/* ── Hero Banner ── */}
+        {/* ── Hero Banner (CSS-first Stagger for Immediate Paint) ── */}
         <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-black text-white">
           {/* Background image — lowest layer */}
           <Image
@@ -118,7 +119,7 @@ export default function ServicesPage() {
             fill
             sizes="100vw"
             priority
-            className="object-cover object-top opacity-50"
+            className="object-cover object-top opacity-50 animate-hero-image-scale"
           />
 
           {/* Black tint overlay */}
@@ -136,16 +137,30 @@ export default function ServicesPage() {
 
           <div className="relative max-w-[1380px] mx-auto px-4 sm:px-8 lg:px-[65px]">
             <div className="max-w-3xl space-y-6">
-              <Badge variant="yellow" className="text-[10px] tracking-widest">
-                Our Services
-              </Badge>
-              <h1 className="text-4xl sm:text-5xl lg:text-[64px] font-black tracking-tight text-white leading-[1.06] uppercase">
+              <div className="animate-hero-fade-up">
+                <Badge variant="yellow" className="text-[10px] tracking-widest">
+                  Our Services
+                </Badge>
+              </div>
+
+              <h1
+                className="text-[28px] sm:text-4xl md:text-5xl lg:text-[64px] font-black tracking-tight text-white leading-[1.12] sm:leading-[1.06] uppercase animate-hero-fade-up"
+                style={{ animationDelay: '150ms' }}
+              >
                 Five Pillars.<br />One Empire.
               </h1>
-              <p className="text-base sm:text-lg lg:text-xl text-zinc-300 font-light leading-relaxed max-w-2xl">
+
+              <p
+                className="text-base sm:text-lg lg:text-xl text-zinc-300 font-light leading-relaxed max-w-2xl animate-hero-fade-up"
+                style={{ animationDelay: '300ms' }}
+              >
                 Marshall &amp; The Gypsies operates across five seamlessly integrated service pillars — each designed to amplify culture, protect talent, and deliver unforgettable experiences at scale.
               </p>
-              <div className="flex flex-col sm:flex-row gap-3 pt-2 w-full sm:w-auto">
+
+              <div
+                className="flex flex-col sm:flex-row gap-3 pt-2 w-full sm:w-auto animate-hero-fade-up"
+                style={{ animationDelay: '450ms' }}
+              >
                 <button
                   type="button"
                   className="inline-flex items-center justify-center cursor-pointer select-none tracking-tight leading-none rounded-[15px] sm:rounded-full bg-[#FFFD63] text-black hover:bg-yellow-300 transition-all duration-200 active:scale-[0.98] h-[52px] sm:h-[56px] px-8 sm:px-9 text-base sm:text-[17px] font-semibold shadow-sm w-full sm:w-auto"
@@ -191,19 +206,26 @@ export default function ServicesPage() {
 
         {/* ── Pillars ── */}
         <section className="py-16 md:py-24 bg-white">
-          <div className="max-w-[1380px] mx-auto px-4 sm:px-8 lg:px-[65px] space-y-10 md:space-y-14">
-            {PILLARS.map((pillar) => (
-              <div key={pillar.number} id={`pillar-${pillar.number}`} className="scroll-mt-32">
-                <PillarCard
-                  number={pillar.number}
-                  title={pillar.title}
-                  description={pillar.description}
-                  imageSrc={pillar.imageSrc}
-                  imageAlt={pillar.imageAlt}
-                  imageRight={pillar.imageRight}
-                  subPrograms={pillar.subPrograms}
-                />
-              </div>
+          <div className="max-w-[1380px] mx-auto px-4 sm:px-8 lg:px-[65px] space-y-12 md:space-y-16">
+            {PILLARS.map((pillar, idx) => (
+              <ScrollReveal
+                key={pillar.number}
+                variant="fade-up"
+                delay={idx * 80}
+                className="w-full"
+              >
+                <div id={`pillar-${pillar.number}`} className="scroll-mt-32">
+                  <PillarCard
+                    number={pillar.number}
+                    title={pillar.title}
+                    description={pillar.description}
+                    imageSrc={pillar.imageSrc}
+                    imageAlt={pillar.imageAlt}
+                    imageRight={pillar.imageRight}
+                    subPrograms={pillar.subPrograms}
+                  />
+                </div>
+              </ScrollReveal>
             ))}
           </div>
         </section>
@@ -219,7 +241,12 @@ export default function ServicesPage() {
               '/images/NEXGEN-8225.jpg',
               '/images/NEXGEN-8248.jpg',
             ].map((src, i) => (
-              <div key={i} className="relative aspect-square overflow-hidden">
+              <ScrollReveal
+                key={i}
+                variant="fade-up"
+                delay={i * 70}
+                className="relative aspect-square overflow-hidden"
+              >
                 <Image
                   src={src}
                   alt={`MGE gallery ${i + 1}`}
@@ -227,7 +254,7 @@ export default function ServicesPage() {
                   sizes="(max-width: 768px) 33vw, 16vw"
                   className="object-cover object-top hover:scale-105 transition-transform duration-700"
                 />
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </section>
@@ -235,33 +262,44 @@ export default function ServicesPage() {
         {/* ── CTA ── */}
         <section className="py-20 md:py-28 bg-zinc-950 text-white">
           <div className="max-w-[1380px] mx-auto px-4 sm:px-8 lg:px-[65px] text-center space-y-6">
-            <Badge variant="yellow" className="text-[10px] tracking-widest">
-              Ready to work together?
-            </Badge>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight uppercase leading-tight">
-              Let&apos;s Build Something<br />Legendary
-            </h2>
-            <p className="text-zinc-400 text-base sm:text-lg max-w-xl mx-auto leading-relaxed font-light">
-              From a single club night to a multi-city tour — bring us your vision and we&apos;ll handle everything else.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2 w-full sm:w-auto">
-              <Button
-                variant="primary"
-                size="lg"
-                className="bg-[#FFFD63] text-black hover:bg-yellow-300 h-[52px] sm:h-[56px] px-8 sm:px-9 text-base sm:text-[17px] font-semibold w-full sm:w-auto rounded-[15px] sm:rounded-full"
-                onClick={() => {
-                  window.location.href = 'mailto:hello@mge-events.com';
-                }}
-              >
-                Get in Touch
-              </Button>
-              <Link
-                href="/"
-                className="inline-flex items-center justify-center gap-2 cursor-pointer select-none tracking-tight leading-none rounded-[15px] sm:rounded-full border border-zinc-700 text-base sm:text-[17px] font-semibold text-zinc-300 hover:border-white hover:text-white transition-all duration-200 active:scale-[0.98] h-[52px] sm:h-[56px] px-8 sm:px-9 w-full sm:w-auto"
-              >
-                Back to Home
-              </Link>
-            </div>
+            <ScrollReveal variant="fade-up" delay={0}>
+              <Badge variant="yellow" className="text-[10px] tracking-widest">
+                Ready to work together?
+              </Badge>
+            </ScrollReveal>
+
+            <ScrollReveal variant="fade-up" delay={150}>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight uppercase leading-tight">
+                Let&apos;s Build Something<br />Legendary
+              </h2>
+            </ScrollReveal>
+
+            <ScrollReveal variant="fade-up" delay={250}>
+              <p className="text-zinc-400 text-base sm:text-lg max-w-xl mx-auto leading-relaxed font-light">
+                From a single club night to a multi-city tour — bring us your vision and we&apos;ll handle everything else.
+              </p>
+            </ScrollReveal>
+
+            <ScrollReveal variant="fade-up" delay={350}>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2 w-full sm:w-auto">
+                <Button
+                  variant="primary"
+                  size="lg"
+                  className="bg-[#FFFD63] text-black hover:bg-yellow-300 h-[52px] sm:h-[56px] px-8 sm:px-9 text-base sm:text-[17px] font-semibold w-full sm:w-auto rounded-[15px] sm:rounded-full"
+                  onClick={() => {
+                    window.location.href = 'mailto:hello@mge-events.com';
+                  }}
+                >
+                  Get in Touch
+                </Button>
+                <Link
+                  href="/"
+                  className="inline-flex items-center justify-center gap-2 cursor-pointer select-none tracking-tight leading-none rounded-[15px] sm:rounded-full border border-zinc-700 text-base sm:text-[17px] font-semibold text-zinc-300 hover:border-white hover:text-white transition-all duration-200 active:scale-[0.98] h-[52px] sm:h-[56px] px-8 sm:px-9 w-full sm:w-auto"
+                >
+                  Back to Home
+                </Link>
+              </div>
+            </ScrollReveal>
           </div>
         </section>
       </main>

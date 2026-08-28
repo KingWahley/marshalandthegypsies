@@ -35,15 +35,24 @@ export const Hero: React.FC = () => {
       <div className="relative z-10 max-w-[1380px] mx-auto px-4 sm:px-8 lg:px-[65px]">
         {/* Header Text */}
         <div className="text-center max-w-4xl mx-auto space-y-4 mb-10 md:mb-12">
-          <h1 className="text-center font-black tracking-tight text-[#0A0B1E] uppercase text-[32px] sm:text-[48px] lg:text-[63.11px] leading-[38px] sm:leading-[54px] lg:leading-[71.11px] font-sans">
+          <h1
+            style={{ animationDelay: '100ms' }}
+            className="hero-fade-up text-center font-black tracking-tight text-[#0A0B1E] uppercase text-[32px] sm:text-[48px] lg:text-[63.11px] leading-[38px] sm:leading-[54px] lg:leading-[71.11px] font-sans"
+          >
             THE MOTHER OF NIGHTLIFE
           </h1>
-          <p className="text-center text-[#0A0B1E] text-sm sm:text-base font-light leading-relaxed sm:leading-[24.89px] max-w-2xl mx-auto px-4">
+          <p
+            style={{ animationDelay: '250ms' }}
+            className="hero-fade-up text-center text-[#0A0B1E] text-sm sm:text-base font-light leading-relaxed sm:leading-[24.89px] max-w-2xl mx-auto px-4"
+          >
             Where culture, talent, and premium experiences converge. We create, curate, and execute unforgettable moments that set the tempo for modern nightlife.
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 pt-2 w-full mx-auto">
+          <div
+            style={{ animationDelay: '400ms' }}
+            className="hero-fade-up flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 pt-2 w-full mx-auto"
+          >
             <button
               type="button"
               className="inline-flex items-center justify-center cursor-pointer select-none tracking-tight leading-none rounded-[15px] sm:rounded-full bg-black text-white hover:bg-zinc-800 transition-all duration-200 active:scale-[0.98] h-[52px] sm:h-[56px] px-8 sm:px-9 text-base sm:text-[17px] font-medium gap-3 shadow-sm w-full sm:w-auto"
@@ -72,7 +81,10 @@ export const Hero: React.FC = () => {
       </div>
 
       {/* ── MOBILE: full-bleed video, no frame, no radius ── */}
-      <div className="block sm:hidden w-full relative aspect-video bg-zinc-950">
+      <div
+        style={{ animationDelay: '550ms' }}
+        className="hero-image-scale block sm:hidden w-full relative aspect-video bg-zinc-950"
+      >
         <video
           ref={videoRef}
           loop
@@ -87,7 +99,10 @@ export const Hero: React.FC = () => {
       </div>
 
       {/* ── DESKTOP: yellow framed container ── */}
-      <div className="hidden sm:block relative z-10 max-w-[1380px] mx-auto px-4 sm:px-8 lg:px-[65px]">
+      <div
+        style={{ animationDelay: '550ms' }}
+        className="hero-image-scale hidden sm:block relative z-10 max-w-[1380px] mx-auto px-4 sm:px-8 lg:px-[65px]"
+      >
         <div className="relative bg-[#FFFD6A] rounded-[21px] p-3.5 sm:p-6 md:p-8 pb-0 sm:pb-0 md:pb-0 shadow-2xl border border-yellow-300/40 overflow-hidden">
           <div className="bg-zinc-950 rounded-t-[21px] rounded-b-none overflow-hidden relative aspect-video w-full">
             <video

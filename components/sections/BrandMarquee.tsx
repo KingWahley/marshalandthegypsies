@@ -70,16 +70,20 @@ const BRANDS: Brand[] = [
   },
 ];
 
+import { ScrollReveal } from '@/components/ui/ScrollReveal';
+
 export const BrandMarquee: React.FC = () => {
   return (
     <section className="py-16 sm:py-20 md:py-24 bg-white border-b border-zinc-100 overflow-hidden">
       <div className="max-w-[1380px] mx-auto px-4 sm:px-8 lg:px-[65px] mb-10 sm:mb-14 text-center">
-        <p className="text-xs sm:text-sm font-bold tracking-widest text-zinc-400 uppercase font-mono">
-          Trusted by Global Lifestyle &amp; Beverage Giants
-        </p>
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-zinc-950 font-sans mt-2">
-          Brands We Work With
-        </h2>
+        <ScrollReveal variant="fade-up" delay={0}>
+          <p className="hidden sm:block text-xs sm:text-sm font-bold tracking-widest text-zinc-400 uppercase font-mono">
+            Trusted by Global Lifestyle &amp; Beverage Giants
+          </p>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-zinc-950 font-sans mt-2">
+            Brands We Work With
+          </h2>
+        </ScrollReveal>
       </div>
 
       {/* MOBILE: Static 2-column grid (2 logos in a row, no animation) */}

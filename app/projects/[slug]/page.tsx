@@ -20,6 +20,7 @@ import { Navbar } from '@/components/navigation/Navbar';
 import { Footer } from '@/components/sections/Footer';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
+import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { PROJECTS_DATA, Project } from '@/data/projects';
 
 export default function ProjectDetailsPage({
@@ -87,7 +88,7 @@ export default function ProjectDetailsPage({
             fill
             sizes="100vw"
             priority
-            className="object-cover object-top opacity-35"
+            className="object-cover object-top opacity-35 animate-hero-image-scale"
           />
 
           <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/90 pointer-events-none" />
@@ -104,7 +105,7 @@ export default function ProjectDetailsPage({
           <div className="relative z-10 max-w-[1380px] mx-auto px-4 sm:px-8 lg:px-[65px]">
             <div className="max-w-4xl space-y-6">
               {/* Back to Projects link */}
-              <div>
+              <div className="animate-hero-fade-up">
                 <Link
                   href="/projects"
                   className="inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-zinc-300 hover:text-white transition-colors bg-white/10 px-4 py-2 rounded-full border border-white/10"
@@ -114,7 +115,10 @@ export default function ProjectDetailsPage({
                 </Link>
               </div>
 
-              <div className="flex flex-wrap items-center gap-3">
+              <div
+                className="flex flex-wrap items-center gap-3 animate-hero-fade-up"
+                style={{ animationDelay: '100ms' }}
+              >
                 <Badge variant="yellow" className="text-[10px] tracking-widest uppercase">
                   {project.partnerBadge}
                 </Badge>
@@ -124,11 +128,17 @@ export default function ProjectDetailsPage({
                 </span>
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-[64px] font-black tracking-tight text-white leading-[1.08] uppercase">
+              <h1
+                className="text-[26px] sm:text-4xl md:text-5xl lg:text-[64px] font-black tracking-tight text-white leading-[1.12] sm:leading-[1.08] uppercase animate-hero-fade-up"
+                style={{ animationDelay: '200ms' }}
+              >
                 {project.title}
               </h1>
 
-              <p className="text-base sm:text-lg lg:text-xl text-zinc-300 font-light leading-relaxed max-w-3xl">
+              <p
+                className="text-base sm:text-lg lg:text-xl text-zinc-300 font-light leading-relaxed max-w-3xl animate-hero-fade-up"
+                style={{ animationDelay: '300ms' }}
+              >
                 {project.subtitle}
               </p>
             </div>
@@ -143,7 +153,7 @@ export default function ProjectDetailsPage({
             {/* Top Details Split */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
               {/* Left Column: Narrative & Highlights */}
-              <div className="lg:col-span-7 space-y-8">
+              <ScrollReveal variant="fade-up" delay={0} className="lg:col-span-7 space-y-8">
                 <div className="space-y-4">
                   <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-950">
                     Project Overview
@@ -180,10 +190,10 @@ export default function ProjectDetailsPage({
                     ))}
                   </div>
                 </div>
-              </div>
+              </ScrollReveal>
 
               {/* Right Column: Impact Metrics with Brand Logos */}
-              <div className="lg:col-span-5 bg-white p-6 sm:p-8 rounded-[24px] border border-zinc-200/80 shadow-md space-y-6">
+              <ScrollReveal variant="fade-up" delay={150} className="lg:col-span-5 bg-white p-6 sm:p-8 rounded-[24px] border border-zinc-200/80 shadow-md space-y-6">
                 <div className="flex items-center justify-between border-b border-zinc-100 pb-4">
                   <h3 className="text-lg font-bold text-zinc-950 tracking-tight">
                     Key Performance Metrics
@@ -219,12 +229,12 @@ export default function ProjectDetailsPage({
                     </div>
                   ))}
                 </div>
-              </div>
+              </ScrollReveal>
             </div>
 
             {/* ── Multi-Venue Breakdown (if venues exist) ── */}
             {project.venues && project.venues.length > 0 && (
-              <div className="space-y-6 pt-8 border-t border-zinc-200/80">
+              <ScrollReveal variant="fade-up" delay={0} className="space-y-6 pt-8 border-t border-zinc-200/80">
                 <div className="space-y-2">
                   <Badge variant="default" className="text-[10px] tracking-widest uppercase">
                     Tour Route &amp; Takeovers
@@ -284,96 +294,112 @@ export default function ProjectDetailsPage({
                     </div>
                   </div>
                 )}
-              </div>
+              </ScrollReveal>
             )}
 
             {/* ── Project Visual Gallery ── */}
             <div className="space-y-6 pt-8 border-t border-zinc-200/80">
-              <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-950">
-                Visual Archive &amp; Moments
-              </h3>
+              <ScrollReveal variant="fade-up" delay={0}>
+                <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-950">
+                  Visual Archive &amp; Moments
+                </h3>
+              </ScrollReveal>
 
               {/* Photo Grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {project.gallery.map((img, imgIdx) => (
-                  <div
+                  <ScrollReveal
                     key={imgIdx}
-                    onClick={() => openLightbox(imgIdx)}
-                    className="group relative aspect-4/3 rounded-[21px] overflow-hidden bg-zinc-900 border border-zinc-200/80 shadow-xs hover:shadow-xl transition-all duration-500 cursor-pointer"
+                    variant="fade-up"
+                    delay={imgIdx * 80}
+                    className="w-full"
                   >
-                    <Image
-                      src={img.src}
-                      alt={img.caption}
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                    />
-                  </div>
+                    <div
+                      onClick={() => openLightbox(imgIdx)}
+                      className="group relative aspect-4/3 rounded-[21px] overflow-hidden bg-zinc-900 border border-zinc-200/80 shadow-xs hover:shadow-xl transition-all duration-500 cursor-pointer"
+                    >
+                      <Image
+                        src={img.src}
+                        alt={img.caption}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                      />
+                    </div>
+                  </ScrollReveal>
                 ))}
               </div>
             </div>
 
             {/* ── Other Projects & Activations ── */}
             <div className="space-y-8 pt-12 border-t border-zinc-200/80">
-              <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-                <div>
-                  <p className="text-xs font-bold tracking-widest text-zinc-400 uppercase font-mono">
-                    Explore More
-                  </p>
-                  <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-950 mt-1">
-                    Other Projects &amp; Activations
-                  </h3>
+              <ScrollReveal variant="fade-up" delay={0}>
+                <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+                  <div>
+                    <p className="text-xs font-bold tracking-widest text-zinc-400 uppercase font-mono">
+                      Explore More
+                    </p>
+                    <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-950 mt-1">
+                      Other Projects &amp; Activations
+                    </h3>
+                  </div>
+                  <Link
+                    href="/projects"
+                    className="text-xs sm:text-sm font-semibold text-zinc-700 hover:text-black transition-colors inline-flex items-center gap-1.5"
+                  >
+                    <span>View All Projects</span>
+                    <ArrowUpRight className="w-4 h-4" />
+                  </Link>
                 </div>
-                <Link
-                  href="/projects"
-                  className="text-xs sm:text-sm font-semibold text-zinc-700 hover:text-black transition-colors inline-flex items-center gap-1.5"
-                >
-                  <span>View All Projects</span>
-                  <ArrowUpRight className="w-4 h-4" />
-                </Link>
-              </div>
+              </ScrollReveal>
 
               {/* 2-Column Responsive Card Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10">
-                {PROJECTS_DATA.filter((p) => p.slug !== project.slug).map((otherProj) => (
-                  <Link
+                {PROJECTS_DATA.filter((p) => p.slug !== project.slug).map((otherProj, oIdx) => (
+                  <ScrollReveal
                     key={otherProj.slug}
-                    href={`/projects/${otherProj.slug}`}
-                    className="group flex flex-col space-y-4 cursor-pointer"
+                    variant="fade-up"
+                    delay={oIdx * 120}
+                    className="w-full"
                   >
-                    {/* Card Cover Image with asymmetric top-right rounded corner */}
-                    <div className="relative aspect-16/10 w-full overflow-hidden bg-zinc-900 rounded-2xl rounded-tr-[48px] sm:rounded-tr-[56px] shadow-xs">
-                      <Image
-                        src={otherProj.coverImage}
-                        alt={otherProj.title}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                        className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                      />
-                    </div>
+                    <Link
+                      href={`/projects/${otherProj.slug}`}
+                      className="group flex flex-col space-y-4 cursor-pointer"
+                    >
+                      {/* Card Cover Image with asymmetric top-right rounded corner */}
+                      <div className="relative aspect-16/10 w-full overflow-hidden bg-zinc-900 rounded-2xl rounded-tr-[48px] sm:rounded-tr-[56px] shadow-xs">
+                        <Image
+                          src={otherProj.coverImage}
+                          alt={otherProj.title}
+                          fill
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                          className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                        />
+                      </div>
 
-                    {/* Pill Badge */}
-                    <div>
-                      <span className="inline-flex items-center px-3.5 py-1 rounded-full bg-zinc-100/90 text-zinc-700 text-xs font-medium border border-zinc-200/50">
-                        {otherProj.partnerBadge}
-                      </span>
-                    </div>
+                      {/* Pill Badge */}
+                      <div>
+                        <span className="inline-flex items-center px-3.5 py-1 rounded-full bg-zinc-100/90 text-zinc-700 text-xs font-medium border border-zinc-200/50">
+                          {otherProj.partnerBadge}
+                        </span>
+                      </div>
 
-                    {/* Title */}
-                    <div className="space-y-1.5 flex-1">
-                      <h4 className="text-lg sm:text-xl font-bold tracking-tight text-zinc-950 group-hover:text-[#833AB4] transition-colors leading-snug">
-                        {otherProj.title}
-                      </h4>
-                    </div>
+                      {/* Title */}
+                      <div className="space-y-1.5 flex-1">
+                        <h4 className="text-lg sm:text-xl font-bold tracking-tight text-zinc-950 group-hover:text-[#833AB4] transition-colors leading-snug">
+                          {otherProj.title}
+                        </h4>
+                      </div>
 
-                    {/* Bottom Link */}
-                    <div className="pt-1">
-                      <span className="text-sm font-semibold text-[#833AB4] group-hover:text-[#6D28D9] transition-colors inline-flex items-center gap-1">
-                        <span>Explore Project</span>
-                        <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                      </span>
-                    </div>
-                  </Link>
+                      {/* Bottom Link */}
+                      <div className="pt-1">
+                        <span className="text-sm font-semibold text-[#833AB4] group-hover:text-[#6D28D9] transition-colors inline-flex items-center gap-1">
+                          <span>Explore Project</span>
+                          <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                        </span>
+                      </div>
+                    </Link>
+                  </ScrollReveal>
                 ))}
               </div>
             </div>
@@ -383,33 +409,44 @@ export default function ProjectDetailsPage({
         {/* ── Closing CTA ── */}
         <section className="py-20 md:py-28 bg-[#FFFD63] text-zinc-950 text-center">
           <div className="max-w-4xl mx-auto px-4 sm:px-8 space-y-6">
-            <Badge variant="outline" className="text-[10px] tracking-widest border-zinc-900 text-zinc-950 font-bold uppercase">
-              Partner With MGE
-            </Badge>
-            <h2 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight uppercase leading-tight font-sans text-zinc-950">
-              Ready to Create the Next Cultural Benchmark?
-            </h2>
-            <p className="text-base sm:text-lg text-zinc-800 max-w-2xl mx-auto leading-relaxed font-normal">
-              From exclusive multi-venue tours to high-fashion signature activations, we engineer the platforms where culture happens.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2 w-full sm:w-auto">
-              <Link href="/contact" className="w-full sm:w-auto">
-                <Button
-                  variant="dark"
-                  size="lg"
-                  className="bg-black text-white hover:bg-zinc-800 h-[52px] sm:h-[56px] px-8 sm:px-9 text-base sm:text-[17px] font-semibold w-full sm:w-auto rounded-[15px] sm:rounded-full"
+            <ScrollReveal variant="fade-up" delay={0}>
+              <Badge variant="outline" className="text-[10px] tracking-widest border-zinc-900 text-zinc-950 font-bold uppercase">
+                Partner With MGE
+              </Badge>
+            </ScrollReveal>
+
+            <ScrollReveal variant="fade-up" delay={150}>
+              <h2 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight uppercase leading-tight font-sans text-zinc-950">
+                Ready to Create the Next Cultural Benchmark?
+              </h2>
+            </ScrollReveal>
+
+            <ScrollReveal variant="fade-up" delay={250}>
+              <p className="text-base sm:text-lg text-zinc-800 max-w-2xl mx-auto leading-relaxed font-normal">
+                From exclusive multi-venue tours to high-fashion signature activations, we engineer the platforms where culture happens.
+              </p>
+            </ScrollReveal>
+
+            <ScrollReveal variant="fade-up" delay={350}>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2 w-full sm:w-auto">
+                <Link href="/contact" className="w-full sm:w-auto">
+                  <Button
+                    variant="dark"
+                    size="lg"
+                    className="bg-black text-white hover:bg-zinc-800 h-[52px] sm:h-[56px] px-8 sm:px-9 text-base sm:text-[17px] font-semibold w-full sm:w-auto rounded-[15px] sm:rounded-full"
+                  >
+                    Contact Management
+                  </Button>
+                </Link>
+                <Link
+                  href="/projects"
+                  className="inline-flex items-center justify-center gap-2 cursor-pointer select-none tracking-tight leading-none rounded-[15px] sm:rounded-full border border-zinc-900 text-base sm:text-[17px] font-semibold text-zinc-950 hover:bg-black/5 transition-all duration-200 active:scale-[0.98] h-[52px] sm:h-[56px] px-8 sm:px-9 w-full sm:w-auto"
                 >
-                  Contact Management
-                </Button>
-              </Link>
-              <Link
-                href="/projects"
-                className="inline-flex items-center justify-center gap-2 cursor-pointer select-none tracking-tight leading-none rounded-[15px] sm:rounded-full border border-zinc-900 text-base sm:text-[17px] font-semibold text-zinc-950 hover:bg-black/5 transition-all duration-200 active:scale-[0.98] h-[52px] sm:h-[56px] px-8 sm:px-9 w-full sm:w-auto"
-              >
-                <span>All Projects</span>
-                <ArrowUpRight className="w-4 h-4" />
-              </Link>
-            </div>
+                  <span>All Projects</span>
+                  <ArrowUpRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </ScrollReveal>
           </div>
         </section>
       </main>

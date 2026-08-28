@@ -243,7 +243,7 @@ export default function GalleryPage() {
               <Badge variant="yellow" className="text-[10px] tracking-widest uppercase">
                 Visual Archive
               </Badge>
-              <h1 className="text-4xl sm:text-5xl lg:text-[68px] font-black tracking-tight text-white leading-[1.05] uppercase">
+              <h1 className="text-[26px] sm:text-4xl md:text-5xl lg:text-[68px] font-black tracking-tight text-white leading-[1.12] sm:leading-[1.05] uppercase">
                 The Living Pulse of Nightlife.
               </h1>
               <p className="text-base sm:text-lg lg:text-xl text-zinc-300 font-light leading-relaxed max-w-2xl">

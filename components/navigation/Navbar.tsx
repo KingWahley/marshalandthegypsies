@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Menu, X, ArrowUpRight, Mail, Phone, MapPin } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/Button';
@@ -54,14 +55,21 @@ export const Navbar: React.FC = () => {
           'fixed top-0 left-0 right-0 z-40 transition-all duration-300',
           isScrolled
             ? 'bg-white/95 backdrop-blur-md shadow-xs py-3 sm:py-3.5 border-b border-zinc-200/60'
-            : 'bg-white/90 backdrop-blur-md py-4 sm:py-4.5 border-b border-zinc-200/40'
+            : 'bg-transparent py-4 sm:py-5 border-b border-transparent shadow-none'
         )}
       >
         <div className="max-w-[1380px] mx-auto px-4 sm:px-8 lg:px-[65px] flex items-center justify-between">
-          {/* Logo */}
+          {/* Brand Logo */}
           <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="w-9 h-9 rounded-lg bg-black flex items-center justify-center text-white font-black text-lg tracking-tighter shadow-xs group-hover:scale-105 transition-transform">
-              M
+            <div className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-lg overflow-hidden shadow-xs border border-zinc-200 group-hover:scale-105 transition-transform bg-zinc-900">
+              <Image
+                src="/images/mge-logo.jpeg"
+                alt="MGE — Marshall & The Gypsies Logo"
+                fill
+                sizes="40px"
+                className="object-cover"
+                priority
+              />
             </div>
             <span className="font-black text-xl tracking-tight text-zinc-950">
               MGE
@@ -127,8 +135,14 @@ export const Navbar: React.FC = () => {
         {/* Drawer Header */}
         <div className="flex items-center justify-between pb-6 border-b border-zinc-800/80">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-[#FFFD63] flex items-center justify-center text-black font-black text-base shadow-xs">
-              M
+            <div className="relative w-9 h-9 rounded-lg overflow-hidden shadow-xs border border-zinc-700 bg-zinc-900 shrink-0">
+              <Image
+                src="/images/mge-logo.jpeg"
+                alt="MGE Logo"
+                fill
+                sizes="36px"
+                className="object-cover"
+              />
             </div>
             <div>
               <span className="font-black text-lg tracking-tight text-white block leading-none">

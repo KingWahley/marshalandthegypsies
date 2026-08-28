@@ -67,9 +67,49 @@ body {
   animation: marquee-right 40s linear infinite;
 }
 
-.animate-marquee-left:hover,
-.animate-marquee-right:hover {
-  animation-play-state: paused;
+@keyframes heroFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroImageScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes popUp {
+  0% {
+    opacity: 0;
+    transform: scale(0.92) translateY(24px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.hero-fade-up {
+  animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero-image-scale {
+  animation: heroImageScale 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-pop-up {
+  animation: popUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 

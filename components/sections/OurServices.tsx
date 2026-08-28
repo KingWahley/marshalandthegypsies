@@ -4,6 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
+import { ScrollReveal } from '@/components/ui/ScrollReveal';
 
 interface ServiceCardProps {
   title: string;
@@ -21,8 +22,9 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   isLast,
 }) => {
   return (
-    <div
-      className={`group relative aspect-4/3 overflow-hidden shadow-lg bg-zinc-900 border border-zinc-200/60 cursor-pointer ${
+    <Link
+      href="/services"
+      className={`group block relative aspect-4/3 overflow-hidden shadow-lg bg-zinc-900 border border-zinc-200/60 cursor-pointer ${
         isLast
           ? 'rounded-[21px] lg:rounded-l-[21px] lg:rounded-r-none'
           : 'rounded-[21px]'
@@ -50,7 +52,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
           {description}
         </p>
       </div>
-    </div>
+    </Link>
   );
 };
 
@@ -77,13 +79,19 @@ export const OurServices: React.FC = () => {
       <div className="w-full px-4 sm:px-8 lg:pl-[65px] lg:pr-0">
         {/* Header and Link - Aligned left on all screen sizes */}
         <div className="max-w-4xl space-y-4 mb-12 lg:pr-[65px] text-left flex flex-col items-start">
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-950 font-sans">
-            Our Services
-          </h2>
-          <p className="text-black text-base sm:text-lg lg:text-[22.35px] font-normal leading-relaxed lg:leading-[39.5px] tracking-[-0.202px] max-w-4xl font-sans">
-            From concept to grand scale, we organize premier festivals, club events, brand activations, private soirées, VIP hospitality, and holistic event solutions. We craft experiences with unparalleled precision, atmosphere, and high-energy excitement.
-          </p>
-          <div className="hidden md:block">
+          <ScrollReveal variant="fade-up" delay={0}>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-950 font-sans">
+              Our Services
+            </h2>
+          </ScrollReveal>
+
+          <ScrollReveal variant="fade-up" delay={150}>
+            <p className="text-black text-base sm:text-lg lg:text-[22.35px] font-normal leading-relaxed lg:leading-[39.5px] tracking-[-0.202px] max-w-4xl font-sans">
+              From concept to grand scale, we organize premier festivals, club events, brand activations, private soirées, VIP hospitality, and holistic event solutions. We craft experiences with unparalleled precision, atmosphere, and high-energy excitement.
+            </p>
+          </ScrollReveal>
+
+          <ScrollReveal variant="fade-up" delay={250} className="hidden md:block">
             <Link
               href="/services"
               className="inline-flex items-center gap-1.5 text-sm sm:text-base font-semibold text-[#833AB4] hover:text-[#6D28D9] transition-colors group"
@@ -91,17 +99,23 @@ export const OurServices: React.FC = () => {
               <span>Explore all services</span>
               <span className="group-hover:translate-x-1 transition-transform">→</span>
             </Link>
-          </div>
+          </ScrollReveal>
         </div>
 
         {/* 2-Column Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:pr-0">
           {services.map((service, idx) => (
-            <ServiceCard
+            <ScrollReveal
               key={service.title}
-              {...service}
-              isLast={idx === services.length - 1}
-            />
+              variant="fade-up"
+              delay={idx === 0 ? 100 : 300}
+              className="w-full"
+            >
+              <ServiceCard
+                {...service}
+                isLast={idx === services.length - 1}
+              />
+            </ScrollReveal>
           ))}
         </div>
 

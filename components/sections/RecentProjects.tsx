@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { ArrowUpRight } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { ProjectCard } from '@/components/shared/ProjectCard';
+import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { PROJECTS_DATA } from '@/data/projects';
 
 export const RecentProjects: React.FC = () => {
@@ -15,34 +16,36 @@ export const RecentProjects: React.FC = () => {
     <section className="pt-12 pb-10 sm:pt-16 sm:pb-12 md:pt-18 md:pb-12 bg-zinc-50/50 border-b border-zinc-100">
       <div className="max-w-[1380px] mx-auto px-4 sm:px-8 lg:px-[65px] space-y-8 sm:space-y-10">
         {/* Section Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6">
-          <div className="space-y-2">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-zinc-950 font-sans">
-              Recent Projects &amp; Activations
-            </h2>
-            <p className="text-sm sm:text-base text-zinc-600 max-w-2xl font-light">
-              Explore our landmark regional club takeovers, brand activations, and cultural movements.
-            </p>
-          </div>
+        <ScrollReveal variant="fade-up" delay={0}>
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6">
+            <div className="space-y-2">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-zinc-950 font-sans">
+                Recent Projects &amp; Activations
+              </h2>
+              <p className="text-sm sm:text-base text-zinc-600 max-w-2xl font-light">
+                Explore our landmark regional club takeovers, brand activations, and cultural movements.
+              </p>
+            </div>
 
-          {/* Desktop Direct Link */}
-          <div className="hidden sm:block">
-            <Link href="/projects">
-              <Button
-                variant="dark"
-                size="md"
-                className="whitespace-nowrap px-8 h-[48px] min-w-[210px] rounded-full font-semibold text-sm inline-flex items-center justify-center gap-2"
-                icon={<ArrowUpRight className="w-4 h-4 shrink-0" />}
-                iconPosition="right"
-              >
-                View All Projects
-              </Button>
-            </Link>
+            {/* Desktop Direct Link */}
+            <div className="hidden sm:block">
+              <Link href="/projects">
+                <Button
+                  variant="dark"
+                  size="md"
+                  className="whitespace-nowrap px-8 h-[48px] min-w-[210px] rounded-full font-semibold text-sm inline-flex items-center justify-center gap-2"
+                  icon={<ArrowUpRight className="w-4 h-4 shrink-0" />}
+                  iconPosition="right"
+                >
+                  View All Projects
+                </Button>
+              </Link>
+            </div>
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* ── MOBILE: Horizontal Swipe Carousel (< sm) ── */}
-        <div className="block sm:hidden">
+        <ScrollReveal variant="fade-up" delay={150} className="block sm:hidden">
           <div className="flex gap-4 overflow-x-auto no-scrollbar snap-x snap-mandatory scroll-pl-1 pb-2">
             {featuredProjects.map((project) => (
               <Link
@@ -85,21 +88,27 @@ export const RecentProjects: React.FC = () => {
               </Link>
             ))}
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* ── DESKTOP / TABLET: 3-Column Grid (sm+) ── */}
         <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
-          {featuredProjects.map((project) => (
-            <ProjectCard
+          {featuredProjects.map((project, idx) => (
+            <ScrollReveal
               key={project.slug}
-              project={project}
-              showPreview={false}
-            />
+              variant="fade-up"
+              delay={idx * 150}
+              className="w-full"
+            >
+              <ProjectCard
+                project={project}
+                showPreview={false}
+              />
+            </ScrollReveal>
           ))}
         </div>
 
         {/* Mobile View All Projects Button */}
-        <div className="block sm:hidden pt-2">
+        <ScrollReveal variant="fade-up" delay={200} className="block sm:hidden pt-2">
           <Link href="/projects" className="block w-full">
             <Button
               variant="dark"
@@ -111,7 +120,7 @@ export const RecentProjects: React.FC = () => {
               View All Projects
             </Button>
           </Link>
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   );
