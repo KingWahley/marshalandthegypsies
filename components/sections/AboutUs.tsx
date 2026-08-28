@@ -38,11 +38,11 @@ export const AboutUs: React.FC = () => {
           <div className="lg:col-span-7 w-full flex justify-center">
             <div className="relative aspect-16/10 lg:aspect-16/11 w-full max-w-2xl lg:max-w-none rounded-[21px] lg:rounded-r-none overflow-hidden shadow-lg bg-zinc-900 border border-zinc-100 group">
               <Image
-                src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=1400&auto=format&fit=crop"
+                src="/images/NEXGEN-8243.jpg"
                 alt="Crowd dancing and celebrating at M&G Entertainment nightlife event"
                 fill
                 sizes="(max-width: 1024px) 100vw, 60vw"
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
                 priority={false}
               />
             </div>

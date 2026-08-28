@@ -34,7 +34,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
         alt={imageAlt}
         fill
         sizes="(max-width: 768px) 100vw, 50vw"
-        className="object-cover transition-transform duration-700 group-hover:scale-105"
+        className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
       />
 
       {/* Dark overlay & bottom gradient */}
@@ -60,16 +60,14 @@ export const OurServices: React.FC = () => {
       title: 'Nightlife Enthusiasm',
       description:
         "Step into the center of prime nightlife. We'll merge your high-end brand activations into high-profile concepts and elevated social experiences.",
-      imageSrc:
-        'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?q=80&w=1200&auto=format&fit=crop',
+      imageSrc: '/images/NEXGEN-8104.jpg',
       imageAlt: 'Energetic woman enjoying luxury nightlife event',
     },
     {
       title: 'Events Management',
       description:
         'From concept ideation to absolute execution, we manage luxury gatherings with distinctive creative flair, tailored lighting, VIP treatment, on-site catering, and world-class service.',
-      imageSrc:
-        'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1200&auto=format&fit=crop',
+      imageSrc: '/images/NEXGEN-8118.jpg',
       imageAlt: 'Abstract golden nightlife illumination and stage effects',
     },
   ];

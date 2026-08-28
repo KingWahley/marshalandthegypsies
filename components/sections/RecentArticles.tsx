@@ -19,8 +19,7 @@ export const RecentArticles: React.FC = () => {
       id: 1,
       category: 'Inspiration',
       title: '8 Creative Ways to Repurpose Your Webinar Content',
-      imageSrc:
-        'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?q=80&w=800&auto=format&fit=crop',
+      imageSrc: '/images/NEXGEN-8225.jpg',
       imageAlt: 'Hand holding a glowing lightbulb under an archway',
       href: '#',
     },
@@ -29,8 +28,7 @@ export const RecentArticles: React.FC = () => {
       category: 'Inspiration',
       title:
         'Why Webinars Are the #1 Lead Generation Marketing Strategy, You May Not Be Thinking About',
-      imageSrc:
-        'https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop',
+      imageSrc: '/images/NEXGEN-8237.jpg',
       imageAlt: 'Online video meeting and creative team collaboration',
       href: '#',
     },
@@ -39,8 +37,7 @@ export const RecentArticles: React.FC = () => {
       category: 'Inspiration',
       title:
         'How to Drive Qualified Pipeline and Enable Sales After Your Webinar Wraps',
-      imageSrc:
-        'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop',
+      imageSrc: '/images/NEXGEN-8242.jpg',
       imageAlt: 'Smiling speaker in creative modern studio',
       href: '#',
     },

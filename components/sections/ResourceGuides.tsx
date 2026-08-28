@@ -31,8 +31,7 @@ export const ResourceGuides: React.FC = () => {
     {
       id: 1,
       type: 'reel',
-      imageSrc:
-        'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=800&auto=format&fit=crop',
+      imageSrc: '/images/NEXGEN-8202.jpg',
       caption: 'The energy at last weekend’s headline set was unreal! When the bass drops and the crowd becomes one. #GypsyNight #MotherOfNightlife',
       likes: '4.8k',
       comments: '184',
@@ -41,8 +40,7 @@ export const ResourceGuides: React.FC = () => {
     {
       id: 2,
       type: 'reel',
-      imageSrc:
-        'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=800&auto=format&fit=crop',
+      imageSrc: '/images/NEXGEN-8205.jpg',
       caption: 'Behind the scenes: Curating stage lighting, laser arrays & atmospheric audio for the ultimate VIP arena. #NightlifeProduction',
       likes: '3.2k',
       comments: '96',
@@ -51,8 +49,7 @@ export const ResourceGuides: React.FC = () => {
     {
       id: 3,
       type: 'post',
-      imageSrc:
-        'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=800&auto=format&fit=crop',
+      imageSrc: '/images/NEXGEN-8210.jpg',
       caption: 'Unforgettable connections, pure atmosphere, and electric moments. Thank you to everyone who joined the movement! #MGEntertainment',
       likes: '5.6k',
       comments: '230',
@@ -134,7 +131,7 @@ export const ResourceGuides: React.FC = () => {
                   alt={post.caption}
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
                 />
 
                 {/* Reel Badge */}

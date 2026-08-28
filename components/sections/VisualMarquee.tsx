@@ -4,25 +4,25 @@ import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 
 const ROW1_IMAGES = [
-  'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=800&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=800&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=800&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?q=80&w=800&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?q=80&w=800&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=800&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&w=800&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?q=80&w=800&auto=format&fit=crop',
+  '/images/NEXGEN-8162.jpg',
+  '/images/NEXGEN-8165.jpg',
+  '/images/NEXGEN-8167.jpg',
+  '/images/NEXGEN-8168.jpg',
+  '/images/NEXGEN-8172.jpg',
+  '/images/NEXGEN-8180.jpg',
+  '/images/NEXGEN-8183.jpg',
+  '/images/NEXGEN-8184.jpg',
 ];
 
 const ROW2_IMAGES = [
-  'https://images.unsplash.com/photo-1506157786151-b8491531f063?q=80&w=800&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=800&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=800&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?q=80&w=800&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?q=80&w=800&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1574391884720-bbc3740c59d1?q=80&w=800&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?q=80&w=800&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=800&auto=format&fit=crop',
+  '/images/NEXGEN-8186.jpg',
+  '/images/NEXGEN-8189.jpg',
+  '/images/NEXGEN-8192.jpg',
+  '/images/NEXGEN-8193.jpg',
+  '/images/NEXGEN-8196.jpg',
+  '/images/NEXGEN-8198.jpg',
+  '/images/NEXGEN-8221.jpg',
+  '/images/NEXGEN-8223.jpg',
 ];
 
 export const VisualMarquee: React.FC = () => {
@@ -75,7 +75,7 @@ export const VisualMarquee: React.FC = () => {
             alt="Nightlife gallery visual"
             fill
             sizes="100vw"
-            className="object-cover"
+            className="object-cover object-top"
           />
         </div>
       </div>
@@ -101,7 +101,7 @@ export const VisualMarquee: React.FC = () => {
                   alt={`Nightlife gallery visual ${index + 1}`}
                   fill
                   sizes="435px"
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="object-cover object-top transition-transform duration-700 group-hover:scale-110"
                 />
               </div>
             ))}
@@ -127,7 +127,7 @@ export const VisualMarquee: React.FC = () => {
                   alt={`Nightlife gallery visual ${index + 1}`}
                   fill
                   sizes="435px"
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="object-cover object-top transition-transform duration-700 group-hover:scale-110"
                 />
               </div>
             ))}
