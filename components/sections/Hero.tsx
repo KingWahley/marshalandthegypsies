@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useRef, useEffect } from 'react';
+import Link from 'next/link';
 
 export const Hero: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -26,6 +27,33 @@ export const Hero: React.FC = () => {
     observer.observe(video);
     return () => observer.disconnect();
   }, []);
+
+  // Smooth cubic-bezier animated scroll
+  const scrollToHowItWorks = () => {
+    const target = document.getElementById('how-it-works');
+    if (!target) return;
+
+    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - 80;
+    const startPosition = window.pageYOffset;
+    const distance = targetPosition - startPosition;
+    const duration = 900;
+    let start: number | null = null;
+
+    const easeInOutCubic = (t: number) =>
+      t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+    const step = (timestamp: number) => {
+      if (!start) start = timestamp;
+      const progress = Math.min((timestamp - start) / duration, 1);
+      const ease = easeInOutCubic(progress);
+      window.scrollTo(0, startPosition + distance * ease);
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      }
+    };
+
+    window.requestAnimationFrame(step);
+  };
 
   return (
     <section className="relative bg-white pt-24 sm:pt-32 pb-0 overflow-hidden">
@@ -53,26 +81,21 @@ export const Hero: React.FC = () => {
             style={{ animationDelay: '400ms' }}
             className="hero-fade-up flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 pt-2 w-full mx-auto"
           >
+            <Link href="/contact" className="w-full sm:w-auto">
+              <button
+                type="button"
+                className="inline-flex items-center justify-center cursor-pointer select-none tracking-tight leading-none rounded-[15px] sm:rounded-full bg-black text-white hover:bg-zinc-800 transition-all duration-200 active:scale-[0.98] h-[52px] sm:h-[56px] px-8 sm:px-9 text-base sm:text-[17px] font-medium gap-3 shadow-sm w-full sm:w-auto"
+              >
+                <svg className="w-[30px] h-[30px] fill-[#FFFD63] shrink-0" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+                <span>Get Started</span>
+              </button>
+            </Link>
             <button
               type="button"
-              className="inline-flex items-center justify-center cursor-pointer select-none tracking-tight leading-none rounded-[15px] sm:rounded-full bg-black text-white hover:bg-zinc-800 transition-all duration-200 active:scale-[0.98] h-[52px] sm:h-[56px] px-8 sm:px-9 text-base sm:text-[17px] font-medium gap-3 shadow-sm w-full sm:w-auto"
-              onClick={() => {
-                const el = document.getElementById('contact');
-                el?.scrollIntoView({ behavior: 'smooth' });
-              }}
-            >
-              <svg className="w-[30px] h-[30px] fill-[#FFFD63] shrink-0" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-              <span>Get Started</span>
-            </button>
-            <button
-              type="button"
+              onClick={scrollToHowItWorks}
               className="inline-flex items-center justify-center cursor-pointer select-none tracking-tight leading-none rounded-[15px] sm:rounded-full bg-white text-[#0A0B1E] border border-zinc-200 hover:bg-zinc-50 transition-all duration-200 active:scale-[0.98] h-[52px] sm:h-[56px] px-8 sm:px-9 text-base sm:text-[17px] font-medium shadow-sm w-full sm:w-auto"
-              onClick={() => {
-                const el = document.getElementById('how-it-works');
-                el?.scrollIntoView({ behavior: 'smooth' });
-              }}
             >
               <span>How It Works</span>
             </button>

@@ -46,7 +46,7 @@ export const AboutUs: React.FC = () => {
             <ScrollReveal variant="pop-up" delay={200} className="w-full">
               <div className="relative aspect-16/10 lg:aspect-16/11 w-full max-w-2xl lg:max-w-none rounded-none sm:rounded-[21px] lg:rounded-r-none overflow-hidden shadow-lg bg-zinc-900 border-0 sm:border border-zinc-100 group">
                 <Image
-                  src="/images/NEXGEN-8243.jpg"
+                  src="/images/NEXGEN-8205.jpg"
                   alt="Crowd dancing and celebrating at M&G Entertainment nightlife event"
                   fill
                   sizes="(max-width: 1024px) 100vw, 60vw"

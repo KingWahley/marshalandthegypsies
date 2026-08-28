@@ -38,7 +38,7 @@ export const PROJECTS_DATA: Project[] = [
     title: 'The Hennessy Club Tour Activation',
     subtitle: 'Regional Multi-Venue Nightlife Takeover',
     date: 'Oct – Nov 2025',
-    coverImage: '/images/NEXGEN-8104.jpg',
+    coverImage: '/images/NEXGEN-8198.jpg',
     partnerBadge: 'Hennessy Global Alliance',
     partnerLogo: '/images/logos/hennessy.svg',
     partnerName: 'Hennessy Cognac',

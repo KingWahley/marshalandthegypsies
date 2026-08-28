@@ -32,7 +32,7 @@ export const ResourceGuides: React.FC = () => {
     {
       id: 1,
       type: 'reel',
-      imageSrc: '/images/NEXGEN-8094.jpg',
+      imageSrc: '/images/NEXGEN-8090.jpg',
       caption: 'The crowd, the bass, the lights — Gypsy Night redefined the standard. Relive the full magic with us! #MotherOfNightlife',
       likes: '12.4k',
       comments: '482',
@@ -41,7 +41,7 @@ export const ResourceGuides: React.FC = () => {
     {
       id: 2,
       type: 'post',
-      imageSrc: '/images/NEXGEN-8135.jpg',
+      imageSrc: '/images/NEXGEN-8168.jpg',
       caption: 'Setting stages that set the tempo. From regional takeovers to exclusive club circuits, this is where high energy lives.',
       likes: '8.9k',
       comments: '315',
