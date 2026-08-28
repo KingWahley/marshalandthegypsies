@@ -108,8 +108,8 @@ export const OurServices: React.FC = () => {
           ))}
         </div>
 
-        {/* Bottom See All Services Button */}
-        <div className="flex justify-center pt-10 sm:pt-14 lg:pr-[65px]">
+        {/* Bottom See All Services Button - Mobile Only */}
+        <div className="flex justify-center pt-10 sm:pt-14 md:hidden">
           <button
             type="button"
             className="inline-flex items-center justify-center cursor-pointer select-none tracking-tight leading-none rounded-full bg-black text-white hover:bg-zinc-800 transition-all duration-200 active:scale-[0.98] h-[48px] px-8 text-sm font-medium shadow-sm"

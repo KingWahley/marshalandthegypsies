@@ -36,7 +36,7 @@ export const HowItWorks: React.FC = () => {
             <p className="text-base sm:text-lg lg:text-[20px] text-zinc-800 font-normal leading-relaxed max-w-xl font-sans">
               Manage your experience from start to finish, from integrations to registration and from interactive stage elements to post-event data, it&apos;s all here.
             </p>
-            <div>
+            <div className="hidden md:block">
               <Button
                 variant="blue"
                 size="md"
@@ -254,6 +254,20 @@ export const HowItWorks: React.FC = () => {
               </div>
             </div>
           </div>
+        </div>
+        {/* Bottom Learn More Button on Mobile */}
+        <div className="flex justify-center pt-8 md:hidden">
+          <Button
+            variant="blue"
+            size="md"
+            className="bg-[#4B6BFB] hover:bg-blue-600 text-white font-medium text-sm px-8 py-3 rounded-full"
+            onClick={() => {
+              const el = document.getElementById('contact');
+              el?.scrollIntoView({ behavior: 'smooth' });
+            }}
+          >
+            Learn more
+          </Button>
         </div>
       </div>
     </section>
