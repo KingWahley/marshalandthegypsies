@@ -1,11 +1,37 @@
 'use client';
 
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 
 export const Hero: React.FC = () => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    // IntersectionObserver: play only when visible, pause when off-screen
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Attempt play; catch promise rejection (browser policy)
+            video.play().catch(() => {});
+          } else {
+            video.pause();
+          }
+        });
+      },
+      // Start pausing when < 10% of the video is visible
+      { threshold: 0.1 }
+    );
+
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section className="relative bg-white pt-24 sm:pt-32 pb-0 overflow-hidden">
-      {/* Top Main Hero Yellow Background stopping at ~50% of the video frame */}
+      {/* Yellow split background */}
       <div className="absolute top-0 left-0 right-0 h-[68%] sm:h-[66%] md:h-[64%] bg-[#FFFD63] pointer-events-none" />
 
       <div className="relative z-10 max-w-[1380px] mx-auto px-4 sm:px-8 lg:px-[65px]">
@@ -18,7 +44,7 @@ export const Hero: React.FC = () => {
             Where culture, talent, and premium experiences converge. We create, curate, and execute unforgettable moments that set the tempo for modern nightlife.
           </p>
 
-          {/* Buttons: Full width matching video on mobile, row on desktop */}
+          {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 pt-2 w-full mx-auto">
             <button
               type="button"
@@ -48,18 +74,22 @@ export const Hero: React.FC = () => {
 
         {/* Large Rounded Yellow Frame Container */}
         <div className="relative bg-[#FFFD6A] rounded-[21px] p-3.5 sm:p-6 md:p-8 pb-0 sm:pb-0 md:pb-0 shadow-2xl border border-yellow-300/40 overflow-hidden">
-          {/* Inner Video Player Container */}
-          <div className="bg-black rounded-t-[21px] rounded-b-none shadow-2xl border-t border-l border-r border-black/10 overflow-hidden relative aspect-16/9 sm:aspect-16/10 md:aspect-16/9 w-full">
+          {/* Video Container — aspect-ratio keeps layout stable before video loads */}
+          <div className="bg-zinc-950 rounded-t-[21px] rounded-b-none overflow-hidden relative aspect-video w-full">
             <video
-              autoPlay
+              ref={videoRef}
               loop
               muted
               playsInline
-              className="w-full h-full object-cover rounded-t-[21px]"
+              preload="none"
+              // Poster shows instantly — avoids blank black frame while video downloads
+              poster="/images/NEXGEN-8083.jpg"
+              className="w-full h-full object-cover"
+              // Tells the browser this resource is low-priority vs. above-the-fold images / CSS
+              // @ts-expect-error — fetchpriority is valid HTML but not yet in React types
+              fetchpriority="low"
             >
               <source src="/video/hero-video.mp4" type="video/mp4" />
-              <source src="/video/hero%20video.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
             </video>
           </div>
         </div>
