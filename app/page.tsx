@@ -5,6 +5,7 @@ import { AboutUs } from '@/components/sections/AboutUs';
 import { OurServices } from '@/components/sections/OurServices';
 import { BrandMarquee } from '@/components/sections/BrandMarquee';
 import { HowItWorks } from '@/components/sections/HowItWorks';
+import { RecentProjects } from '@/components/sections/RecentProjects';
 import { ResourceGuides } from '@/components/sections/ResourceGuides';
 import { CallToAction } from '@/components/sections/CallToAction';
 import { VisualMarquee } from '@/components/sections/VisualMarquee';
@@ -32,6 +33,9 @@ export default function Home() {
 
         {/* Step-by-Step Workflow Showcase */}
         <HowItWorks />
+
+        {/* Recent Projects Showcase with Mobile Carousel */}
+        <RecentProjects />
 
         {/* Instagram Feed & Highlights Showcase */}
         <ResourceGuides />

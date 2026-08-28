@@ -58,7 +58,7 @@ export const ResourceGuides: React.FC = () => {
   ];
 
   return (
-    <section id="resources" className="py-16 md:py-24 bg-[#FAFAFA] border-b border-zinc-100">
+    <section id="resources" className="pt-12 pb-16 md:pt-16 md:pb-24 bg-[#FAFAFA] border-b border-zinc-100">
       <div className="max-w-[1380px] mx-auto px-4 sm:px-8 lg:px-[65px]">
         {/* Header with Instagram branding - Aligned left on all screen sizes */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16 text-left items-start">

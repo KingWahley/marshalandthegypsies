@@ -40,7 +40,7 @@ export const Button: React.FC<ButtonProps> = ({
   return (
     <button
       className={cn(
-        'inline-flex items-center justify-center cursor-pointer select-none tracking-tight leading-none',
+        'inline-flex items-center justify-center whitespace-nowrap cursor-pointer select-none tracking-tight leading-none',
         pill ? 'rounded-[15px] sm:rounded-full' : 'rounded-[15px] sm:rounded-lg',
         variantClasses[variant],
         sizeClasses[size],
@@ -48,9 +48,9 @@ export const Button: React.FC<ButtonProps> = ({
       )}
       {...props}
     >
-      {icon && iconPosition === 'left' && <span className="shrink-0">{icon}</span>}
-      <span>{children}</span>
-      {icon && iconPosition === 'right' && <span className="shrink-0">{icon}</span>}
+      {icon && iconPosition === 'left' && <span className="shrink-0 inline-flex items-center">{icon}</span>}
+      <span className="inline-flex items-center gap-2 whitespace-nowrap">{children}</span>
+      {icon && iconPosition === 'right' && <span className="shrink-0 inline-flex items-center">{icon}</span>}
     </button>
   );
 };
