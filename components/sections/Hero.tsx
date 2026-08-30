@@ -2,6 +2,7 @@
 
 import React, { useRef, useEffect } from 'react';
 import Link from 'next/link';
+import { globalLenis } from '@/components/providers/SmoothScrollProvider';
 
 export const Hero: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -28,10 +29,15 @@ export const Hero: React.FC = () => {
     return () => observer.disconnect();
   }, []);
 
-  // Smooth cubic-bezier animated scroll
+  // Smooth GSAP / Lenis animated scroll
   const scrollToHowItWorks = () => {
     const target = document.getElementById('how-it-works');
     if (!target) return;
+
+    if (globalLenis) {
+      globalLenis.scrollTo(target, { offset: -70, duration: 1.2 });
+      return;
+    }
 
     const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - 80;
     const startPosition = window.pageYOffset;
