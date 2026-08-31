@@ -60,8 +60,17 @@ html.lenis body {
 }
 
 html {
-  /* Safe-area strip above the fixed header defaults to black on inner pages.
-     The home page overrides this to yellow via data-page="home". */
+  /*
+   * With viewport-fit=cover, the <html> element physically fills the area
+   * behind the Dynamic Island / notch. Setting its background to match each
+   * page's hero colour means that strip is never blank-white.
+   *
+   * Default = black  →  matches all inner (dark hero) pages
+   * Home page overrides to yellow via JS setting data-page="home"
+   */
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
   background: #000000;
 }
 
@@ -70,6 +79,10 @@ html[data-page="home"] {
 }
 
 body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  /* Transparent so html background shows through the safe-area strip */
   background: transparent;
   color: var(--foreground);
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";

@@ -209,7 +209,7 @@ export default function GalleryPage() {
   }, [activeLightboxIndex, nextLightbox, prevLightbox]);
 
   return (
-    <div className="min-h-screen bg-white text-zinc-950 font-sans selection:bg-yellow-300 selection:text-black">
+    <div className="min-h-screen bg-transparent text-zinc-950 font-sans selection:bg-yellow-300 selection:text-black">
       <Navbar />
 
       <main>

@@ -15,9 +15,11 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// Next.js Viewport export — also emits <meta name="viewport"> with viewport-fit=cover
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
+  maximumScale: 1,
   viewportFit: "cover",
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#FFFD63" },
@@ -26,7 +28,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://mge-events.com'),
+  metadataBase: new URL("https://mge-events.com"),
   title: "MGE — Marshall & The Gypsies | The Mother of Nightlife",
   description:
     "Marshall & The Gypsies (M&G) is a premier, full-service entertainment powerhouse and lifestyle institution setting the tempo for modern nightlife.",
@@ -76,6 +78,25 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        {/*
+          Explicit viewport meta — belt-and-braces alongside the Next.js Viewport export.
+          Safari iOS requires viewport-fit=cover in the literal <meta> tag for the page to
+          extend behind the Dynamic Island / notch so content can scroll underneath it.
+        */}
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover"
+        />
+        {/*
+          black-translucent: makes the iOS status bar area transparent so the page
+          background renders behind the Dynamic Island rather than showing a white bar.
+        */}
+        <meta
+          name="apple-mobile-web-app-status-bar-style"
+          content="black-translucent"
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
       >
@@ -88,4 +109,3 @@ export default function RootLayout({
     </html>
   );
 }
-
