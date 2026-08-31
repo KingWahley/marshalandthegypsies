@@ -66,8 +66,14 @@ export const Hero: React.FC = () => {
       className="relative bg-white pb-0 overflow-hidden"
       style={{ paddingTop: 'calc(5rem + env(safe-area-inset-top, 0px))' }}
     >
-      {/* Yellow split background */}
-      <div className="absolute top-0 left-0 right-0 h-[68%] sm:h-[66%] md:h-[64%] bg-[#FFFD63] pointer-events-none" />
+      {/* Yellow split background — bleeds upward behind the Dynamic Island */}
+      <div
+        className="absolute left-0 right-0 h-[68%] sm:h-[66%] md:h-[64%] bg-[#FFFD63] pointer-events-none"
+        style={{
+          top: 'calc(-1 * env(safe-area-inset-top, 0px))',
+          paddingTop: 'env(safe-area-inset-top, 0px)',
+        }}
+      />
 
       <div className="relative z-10 max-w-[1380px] mx-auto px-4 sm:px-8 lg:px-[65px]">
         {/* Header Text */}

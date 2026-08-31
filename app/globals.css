@@ -59,8 +59,18 @@ html.lenis body {
   pointer-events: none;
 }
 
+html {
+  /* Safe-area strip above the fixed header defaults to black on inner pages.
+     The home page overrides this to yellow via data-page="home". */
+  background: #000000;
+}
+
+html[data-page="home"] {
+  background: #FFFD63;
+}
+
 body {
-  background: var(--background);
+  background: transparent;
   color: var(--foreground);
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
 }

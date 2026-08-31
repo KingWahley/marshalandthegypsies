@@ -10,10 +10,13 @@ import { ResourceGuides } from '@/components/sections/ResourceGuides';
 import { CallToAction } from '@/components/sections/CallToAction';
 import { VisualMarquee } from '@/components/sections/VisualMarquee';
 import { Footer } from '@/components/sections/Footer';
+import { HtmlPageColor } from '@/components/utils/HtmlPageColor';
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-white text-zinc-950 font-sans selection:bg-yellow-300 selection:text-black">
+      {/* Paint the iOS safe-area strip yellow to match the hero background */}
+      <HtmlPageColor page="home" />
       {/* Navigation Bar */}
       <Navbar />
 
