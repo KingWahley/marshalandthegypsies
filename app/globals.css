@@ -61,16 +61,15 @@ html.lenis body {
 
 html {
   /*
-   * With viewport-fit=cover, the <html> element physically fills the area
-   * behind the Dynamic Island / notch. Setting its background to match each
-   * page's hero colour means that strip is never blank-white.
+   * With viewport-fit=cover, <html> physically fills the area BEHIND the
+   * Dynamic Island / notch. Its background colour paints that strip.
+   * The <body> covers the rest of the viewport (below the island) and is white.
    *
-   * Default = black  →  matches all inner (dark hero) pages
-   * Home page overrides to yellow via JS setting data-page="home"
+   * Default = black  → inner (dark hero) pages
+   * Home page        → yellow via JS data-page="home"
    */
   margin: 0;
   padding: 0;
-  min-height: 100%;
   background: #000000;
 }
 
@@ -81,9 +80,8 @@ html[data-page="home"] {
 body {
   margin: 0;
   padding: 0;
-  min-height: 100%;
-  /* Transparent so html background shows through the safe-area strip */
-  background: transparent;
+  /* White so every section inherits a white background correctly */
+  background: #ffffff;
   color: var(--foreground);
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
 }

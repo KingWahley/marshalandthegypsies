@@ -80,17 +80,9 @@ export default function RootLayout({
     <html lang="en">
       <head>
         {/*
-          Explicit viewport meta — belt-and-braces alongside the Next.js Viewport export.
-          Safari iOS requires viewport-fit=cover in the literal <meta> tag for the page to
-          extend behind the Dynamic Island / notch so content can scroll underneath it.
-        */}
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover"
-        />
-        {/*
-          black-translucent: makes the iOS status bar area transparent so the page
-          background renders behind the Dynamic Island rather than showing a white bar.
+          apple-mobile-web-app-status-bar-style: makes the iOS status bar transparent
+          so the page background renders behind the Dynamic Island.
+          (The viewport meta with viewport-fit=cover is emitted by Next.js's Viewport export above.)
         */}
         <meta
           name="apple-mobile-web-app-status-bar-style"
