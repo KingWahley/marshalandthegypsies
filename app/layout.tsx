@@ -19,7 +19,10 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
-  themeColor: "#000000",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#FFFD63" },
+    { media: "(prefers-color-scheme: dark)", color: "#000000" },
+  ],
 };
 
 export const metadata: Metadata = {
@@ -27,6 +30,11 @@ export const metadata: Metadata = {
   title: "MGE — Marshall & The Gypsies | The Mother of Nightlife",
   description:
     "Marshall & The Gypsies (M&G) is a premier, full-service entertainment powerhouse and lifestyle institution setting the tempo for modern nightlife.",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "MGE",
+  },
   icons: {
     icon: [
       { url: "/images/mge-logo.jpeg", href: "/images/mge-logo.jpeg" },

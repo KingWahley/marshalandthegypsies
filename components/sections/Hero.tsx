@@ -64,7 +64,7 @@ export const Hero: React.FC = () => {
   return (
     <section
       className="relative bg-white pb-0 overflow-hidden"
-      style={{ paddingTop: 'calc(6rem + env(safe-area-inset-top, 0px))' }}
+      style={{ paddingTop: 'calc(5rem + env(safe-area-inset-top, 0px))' }}
     >
       {/* Yellow split background */}
       <div className="absolute top-0 left-0 right-0 h-[68%] sm:h-[66%] md:h-[64%] bg-[#FFFD63] pointer-events-none" />

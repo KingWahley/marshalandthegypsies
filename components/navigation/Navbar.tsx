@@ -61,12 +61,10 @@ export const Navbar: React.FC = () => {
           'fixed top-0 left-0 right-0 z-40 transition-all duration-300',
           isScrolled
             ? 'bg-white/95 backdrop-blur-md shadow-xs pb-3 sm:pb-3.5 border-b border-zinc-200/60'
-            : 'bg-transparent pb-4 sm:pb-5 border-b border-transparent shadow-none'
+            : 'bg-transparent pb-3 sm:pb-4 border-b border-transparent shadow-none'
         )}
         style={{
-          paddingTop: isScrolled
-            ? 'calc(0.75rem + env(safe-area-inset-top, 0px))'
-            : 'calc(1.25rem + env(safe-area-inset-top, 0px))',
+          paddingTop: 'calc(0.75rem + env(safe-area-inset-top, 0px))',
         }}
       >
         <div className="max-w-[1380px] mx-auto px-4 sm:px-8 lg:px-[65px] flex items-center justify-between">

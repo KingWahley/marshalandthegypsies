@@ -33,7 +33,7 @@ export default function ContactPage() {
         {/* ── Hero Section (CSS-first Stagger for Instant Paint) ── */}
         <section
           className="relative pb-20 md:pb-28 overflow-hidden bg-black text-white"
-          style={{ paddingTop: 'calc(8rem + env(safe-area-inset-top, 0px))' }}
+          style={{ paddingTop: 'calc(6.5rem + env(safe-area-inset-top, 0px))' }}
         >
           {/* Background image */}
           <Image
