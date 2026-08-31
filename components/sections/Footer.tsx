@@ -13,7 +13,10 @@ const InstagramIcon: React.FC<{ className?: string }> = ({ className = 'w-4 h-4'
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-black text-zinc-400 pt-16 pb-12 text-xs sm:text-sm border-t border-zinc-900">
+    <footer
+      className="bg-black text-zinc-400 pt-16 text-xs sm:text-sm border-t border-zinc-900"
+      style={{ paddingBottom: 'calc(3rem + env(safe-area-inset-bottom, 0px))' }}
+    >
       <div className="max-w-[1380px] mx-auto px-4 sm:px-8 lg:px-[65px]">
         {/* Top Columns Grid */}
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8 lg:gap-12 pb-12 border-b border-zinc-800/80">

@@ -19,7 +19,10 @@ export default function ProjectsPage() {
 
       <main>
         {/* ── Hero Section (CSS-first Stagger for Immediate Paint) ── */}
-        <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-black text-white">
+        <section
+          className="relative pb-20 md:pb-28 overflow-hidden bg-black text-white"
+          style={{ paddingTop: 'calc(8rem + env(safe-area-inset-top, 0px))' }}
+        >
           <Image
             src="/images/NEXGEN-8243.jpg"
             alt="MGE Brand Track Record and Milestones"

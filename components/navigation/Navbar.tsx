@@ -60,9 +60,14 @@ export const Navbar: React.FC = () => {
         className={cn(
           'fixed top-0 left-0 right-0 z-40 transition-all duration-300',
           isScrolled
-            ? 'bg-white/95 backdrop-blur-md shadow-xs py-3 sm:py-3.5 border-b border-zinc-200/60'
-            : 'bg-transparent py-4 sm:py-5 border-b border-transparent shadow-none'
+            ? 'bg-white/95 backdrop-blur-md shadow-xs pb-3 sm:pb-3.5 border-b border-zinc-200/60'
+            : 'bg-transparent pb-4 sm:pb-5 border-b border-transparent shadow-none'
         )}
+        style={{
+          paddingTop: isScrolled
+            ? 'calc(0.75rem + env(safe-area-inset-top, 0px))'
+            : 'calc(1.25rem + env(safe-area-inset-top, 0px))',
+        }}
       >
         <div className="max-w-[1380px] mx-auto px-4 sm:px-8 lg:px-[65px] flex items-center justify-between">
           {/* Brand Logo */}
@@ -154,9 +159,15 @@ export const Navbar: React.FC = () => {
       <aside
         aria-label="Mobile Navigation"
         className={cn(
-          'fixed inset-y-0 right-0 w-full max-w-[340px] sm:max-w-[380px] bg-[#09090b] text-white z-[100] shadow-2xl flex flex-col justify-between p-6 sm:p-8 min-h-[100dvh] h-full overflow-y-auto border-l border-zinc-800 transition-transform duration-300 ease-out md:hidden',
+          'fixed inset-y-0 right-0 w-full max-w-[340px] sm:max-w-[380px] bg-[#09090b] text-white z-[100] shadow-2xl flex flex-col justify-between min-h-[100dvh] h-full overflow-y-auto border-l border-zinc-800 transition-transform duration-300 ease-out md:hidden',
           mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         )}
+        style={{
+          paddingTop: 'calc(1.5rem + env(safe-area-inset-top, 0px))',
+          paddingBottom: 'calc(1.5rem + env(safe-area-inset-bottom, 0px))',
+          paddingLeft: '1.5rem',
+          paddingRight: 'calc(1.5rem + env(safe-area-inset-right, 0px))',
+        }}
       >
         {/* Drawer Header */}
         <div className="flex items-center justify-between pb-6 border-b border-zinc-800/80">
